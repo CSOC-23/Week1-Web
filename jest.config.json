@@ -1,0 +1,15 @@
+{
+	"reporters": [
+		"default",
+		[
+			"jest-html-reporters",
+			{
+				"filename": "test.html",
+				"pageTitle": "JS Assignments",
+				"openReport": true,
+				"hideIcon": true
+			}
+		]
+	],
+	"testResultsProcessor": "./testsScore"
+}
