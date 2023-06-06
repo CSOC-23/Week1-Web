@@ -44,12 +44,12 @@ async function setCSS(character) {
 
 	if (index % 2 != 0) {
 		//PINK
-		ele[index].style.backgroundColor = "#ff99ff";
+		ele[index].style.backgroundColor = "#e91c2a";
 		colorValue = "rgba(255,105,180,0.9)";
 		ele[index].style.boxShadow = "0px 2px 20px 4px #ffff00";
 	} else {
 		//BLUE
-		ele[index].style.backgroundColor = "aqua";
+		ele[index].style.backgroundColor = "#45b1e3";
 		colorValue = "rgba(0,153,255,0.8)";
 		ele[index].style.boxShadow = "0px 2px 20px 4px  #ffff00";
 	}
