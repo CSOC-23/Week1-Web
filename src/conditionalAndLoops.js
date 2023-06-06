@@ -19,7 +19,16 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3==0 && num%5!=0)
+		return 'Fizz';
+	if(num%5==0 && num%3!=0){
+		return 'Buzz';
+	}
+	if(num%5==0 && num%3==0){
+		return 'FizzBuzz';
+	}
+	else
+		return num;
 }
 
 /**
@@ -34,7 +43,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	var fact=1;
+	for(var i=1;i<=n;i++){
+		fact*=i;
+	}
+	return fact;
 }
 
 /**
@@ -50,7 +63,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	var sum=0;
+	for(var i=n1;i<=n2;i++){
+		
+		sum+=i;
+	}
+	return sum;
 }
 
 /**
@@ -69,7 +87,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	var max=Math.max(a,b,c);
+	if(max<a+b+c-max){
+		return true;
+	}
+	else return false;
 }
 
 /**
@@ -85,9 +107,12 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	var newString = "";
+	for (var i = str.length - 1; i >= 0; i--) { 
+        newString += str[i]; // or newString = newString + str[i];
 }
-
+	return newString;
+}
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
  * Balanced means that is, whether it consists entirely of pairs of opening/closing brackets
@@ -110,7 +135,7 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	
 }
 
 /**
