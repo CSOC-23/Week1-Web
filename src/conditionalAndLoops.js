@@ -19,7 +19,18 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%5==0 && num%3==0){
+	return "FizzBuzz";
+	}
+	else if(num%5==0){
+	return "Buzz";
+	}
+	else if(num%3==0){
+	return "Fizz";
+	}
+	else{
+	return num;
+	}
 }
 
 /**
@@ -34,7 +45,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	let f=1;
+	while(n>0){
+	f*=n;
+	n--;
+	}
+	return f;
 }
 
 /**
@@ -50,7 +66,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let a=0,x=n1;
+	while(x<=n2)
+	{
+		a+=x;
+		x++;
+	}
+	return a;
 }
 
 /**
@@ -69,7 +91,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	return (a+b>c && b+c>a && c+a>b);
 }
 
 /**
@@ -85,7 +107,12 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let reverse="";
+	for(let i=str.length-1;i>=0;i--)
+	{
+		reverse+=str.charAt(i);
+	}
+	return reverse;
 }
 
 /**
@@ -110,7 +137,29 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let stack=[];
+	let bracsOpen="{[(<";
+	let bracsClos="}])>";
+	let closerOf=function(m)
+	{
+		return bracsClos.charAt(bracsOpen.indexOf(m));
+	}
+	for(let i=0;i<str.length;i++)
+	{
+		let c=str.charAt(i);
+		if(bracsOpen.includes(c))
+		{
+			stack.push(c);
+		}
+		else
+		{
+			let k=stack.pop();
+			let clo=closerOf(k);
+			if(c!=clo)
+			return false;
+		}
+	}
+	return(stack.length==0);
 }
 
 /**
@@ -145,7 +194,53 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	let interval=(endDate.valueOf()-startDate.valueOf())*0.001;
+
+	if(interval>0 && interval <=45)
+	return "a few seconds ago";
+
+
+	if(interval>45 && interval<=90)
+	return "a minute ago";
+	if(interval>90 && interval<=(45*60))
+	return `${Math.floor(Math.ceil(interval/30)/2)} minutes ago`;
+
+
+
+	if(interval>45*60  && interval <=90*60)
+	return "an hour ago";
+	if(interval>90*60 && interval<=(22*60*60))
+	{
+		let halfhrs=interval/1800;
+		return `${Math.floor(Math.ceil(halfhrs)/2)} hours ago`;
+	}
+	if(interval>22*60*60 && interval<= 36*60*60)
+	{
+		return "a day ago";
+	}
+	if(interval>36*60*60 &&  interval<=25*24*60*60)
+	{
+		let halfdays=interval/(12*60*60);
+		return `${Math.floor(Math.ceil(halfdays)/2)} days ago`;
+	}
+	if(interval>25*24*60*60 && interval<=45*24*60*60)
+	{
+		return "a month ago";
+	}
+	if(interval>45*24*60*60 && interval<=345*24*60*60)
+	{
+		let halfmonths=interval/(15*24*60*60);
+		return `${Math.floor(Math.ceil(halfmonths)/2)} months ago`;
+	}
+	if(interval>345*24*60*60 && interval<=545*24*60*60)
+	{
+		return "a year ago";
+	}
+	if(interval>545*24*60*60)
+	{
+		let yrs=Math.ceil(Math.floor(interval/(365*24*60*60)));
+		return `${yrs} years ago`;
+	}
 }
 
 /**
