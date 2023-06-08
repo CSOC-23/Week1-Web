@@ -11,7 +11,13 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
+	for (let ind = 0; ind < arr.length; ind++) {
+		if (arr[ind] == value) {
+			return ind
+		}
+	}
+	// If we have completes full traversal of arr, but value is not found, so now we hjave to return -1
+	return -1
 }
 
 /**
@@ -27,7 +33,7 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
+	return arr.concat(arr)
 }
 
 /**
@@ -42,7 +48,13 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
+	var new_arr = []
+	for (let ind = 0; ind < arr.length; ind++) {
+		if (arr[ind] > 0) {
+			new_arr.push(arr[ind])
+		}
+	}
+	return new_arr;
 }
 
 /**
@@ -59,7 +71,16 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
+    var new_arr = []
+	for (let ind = 0; ind < arr.length; ind++) {
+		// if falsy values appear, (!arr[i]) will be true
+		if (!arr[ind]) {
+		  // falsy values will not be appended to new_arr
+		} else {
+			new_arr.push(arr[ind])
+		}
+	 }
+	return new_arr
 }
 
 /**
@@ -73,7 +94,11 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
+	var new_arr =[]
+	for (let ind = 0; ind < arr.length; ind++) {
+		new_arr.push(arr[ind].length)
+	}
+	return new_arr
 }
 
 /**
@@ -89,7 +114,11 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+	var sum = 0
+	for (let ind = 0; ind < arr.length; ind++) {
+		sum += arr[ind]
+	}
+	return sum
 }
 
 module.exports = {

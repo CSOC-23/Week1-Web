@@ -19,7 +19,15 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if (num % 3 == 0 && num % 5 == 0) {
+		return 'FizzBuzz'
+	} else if (num % 3 == 0) {
+		return 'Fizz'
+	} else if (num % 5 == 0) {
+		return 'Buzz'
+	} else {
+		return num
+	}
 }
 
 /**
@@ -34,7 +42,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	if (n <= 1) {
+		return 1
+	} else {
+		return (n * getFactorial(n - 1))
+	}
 }
 
 /**
@@ -50,7 +62,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	var sum = 0
+	for (let i = n1; i <= n2; i++) {
+		sum += i
+	}
+	return sum
 }
 
 /**
@@ -69,7 +85,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if ((a + b > c) && (b + c > a) && (c + a > b)) {
+		return true
+	} else {
+		return false
+	}
 }
 
 /**
@@ -85,7 +105,11 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	new_str = ""
+	for (let i = str.length - 1; i >= 0; i--) {
+		new_str += str[i]
+	}
+	return new_str
 }
 
 /**
@@ -110,7 +134,25 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	var stack = [];
+	var openingBrackets = ['[', '{', '(', '<'];
+	var closingBrackets = [']', '}', ')', '>'];
+
+	for (var i = 0; i < str.length; i++) {
+		var currentChar = str[i];
+
+		if (openingBrackets.includes(currentChar)) {
+			stack.push(currentChar);
+		} else if (closingBrackets.includes(currentChar)) {
+			var expectedBracket = openingBrackets[closingBrackets.indexOf(currentChar)];
+
+			if (stack.length === 0 || stack.pop() !== expectedBracket) {
+				return false;
+			}
+		}
+	}
+
+	return stack.length === 0;
 }
 
 /**
@@ -145,7 +187,71 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	const start = new Date(startDate);
+	const end = new Date(endDate);
+	const milliseconds = end.getTime() - start.getTime();
+	const seconds = Math.floor(milliseconds / 1000)
+	const minutes = Math.floor(milliseconds / 60000)
+	const hours = Math.floor(milliseconds / 3600000)
+
+
+	if (milliseconds >= 0 && milliseconds <= 45000) {
+		return 'a few seconds ago';
+	}
+
+	else if (milliseconds > 45000 && milliseconds <= 90000) {
+		return 'a minute ago';
+	}
+
+	else if (milliseconds > 90000 && milliseconds <= 120000) {
+		return '2 minutes ago';
+	} else if (seconds > 120 && seconds <= 2700) {
+		const ans = Math.floor(seconds / 60000);
+		return `${ans} minutes ago`;
+	}
+
+	else if (seconds > 2700 && seconds <= 5400) {
+		return 'an hour ago';
+	}
+	else if (minutes > 90 && minutes <= 120) {
+		return '2 hours ago';
+	} else if (minutes > 120 && minutes <= 1320) {
+		const ans = Math.floor(minutes / 60);
+		return `${ans} hours ago`;
+	}
+
+	else if (minutes > 1320 && minutes <= 2160) {
+		return 'a day ago';
+	}
+
+	else if (hours > 36 && hours <= 48) {
+		return '2 days ago';
+	} else if (hours > 48 && hours <= 600) {
+		const ans = Math.floor(hours / 24);
+		return `${ans} days ago`;
+	}
+
+	else if (hours > 600 && hours <= 1080) {
+		return 'a month ago';
+	}
+
+	else if (hours > 1080 && hours <= 1440) {
+		return '2 months ago';
+	} else if (hours > 1440 && hours <= 8280) {
+		const ans = Math.floor(hours / 720);
+		return `${ans} months ago`;
+	}
+
+	else if (hours > 8280 && hours <= 13080) {
+		return 'a year ago';
+	}
+
+	else if (hours > 13080 && hours <= 17424) {
+		return '2 years ago';
+	} else {
+		const ans = Math.floor(hours / 8640);
+		return `${ans} years ago`;
+	}
 }
 
 /**
@@ -169,7 +275,16 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	if (n <= 1 || n > 10) {
+		throw new Error("Invalid base. Base should be between 2 and 10.");
+	}
+
+	let result = "";
+	while (num > 0) {
+		result = (num % n) + result;
+		num = Math.floor(num / n);
+	}
+	return result;
 }
 
 module.exports = {

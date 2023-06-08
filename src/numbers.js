@@ -10,7 +10,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-	throw new Error("Not implemented");
+	return width * height
 }
 
 /**
@@ -26,7 +26,16 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	throw new Error("Not implemented");
+	if (!Number.isFinite(value1) || !Number.isFinite(value2)) {
+		throw new Error("Input values must be finite numbers");
+	}
+
+	const average = (value1 + value2) / 2;
+	if (!Number.isFinite(average)) {
+		return Number.MAX_VALUE;
+	}
+
+	return average;
 }
 
 /**
@@ -42,7 +51,12 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-	throw new Error("Not implemented");
+	ans = (-b) / a
+	if (ans == -0) {
+		return 0
+	} else {
+		return ans
+	}
 }
 
 /**
@@ -58,7 +72,9 @@ function getLinearEquationRoot(a, b) {
  *     0     => 0
  */
 function getLastDigit(value) {
-	throw new Error("Not implemented");
+	let str_value = value.toString();
+	let length = str_value.length;
+	return parseInt(str_value[length - 1])
 }
 
 /**
@@ -73,7 +89,8 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-	throw new Error("Not implemented");
+	let number = parseFloat(value)
+	return number
 }
 
 /**
@@ -94,7 +111,17 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
-	throw new Error("Not implemented");
+	if (n <= 1) {
+		return false;
+	}
+
+	for (let i = 2; i <= Math.sqrt(n); i++) {
+		if (n % i === 0) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 module.exports = {
