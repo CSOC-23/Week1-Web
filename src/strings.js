@@ -129,7 +129,21 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let encoded="";
+	for(let i=0;i<str.length;i++)
+	{
+		let cc=str.charCodeAt(i)
+		if(cc>=65 && cc<=(65+26))//capital
+		{
+			cc=65+(cc+13-65)%(26);
+		}
+		if(cc>=97 && cc<=(97+26))//small
+		{
+			cc=97+(cc+13-97)%(26);
+		}
+		encoded+=String.fromCharCode(cc);
+	}
+	return encoded;
 }
 
 module.exports = {

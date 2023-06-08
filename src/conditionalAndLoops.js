@@ -264,7 +264,24 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	return ""+DecToBASE(num,n)
+}
+
+function DecToBASE(n,BASE)
+{
+	if(n==0)
+	return "";
+	else
+	{
+		return DecToBASE(Math.floor(n/BASE),BASE)+""+fathom(n%BASE);
+	}
+}
+function fathom(num)
+{
+	if(num<10)
+	return num;
+	else
+	return String.fromCharCode(55+num);
 }
 
 module.exports = {
