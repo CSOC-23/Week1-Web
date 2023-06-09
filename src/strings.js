@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1 + value2;
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0];
 }
 
 /**
@@ -55,7 +55,13 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	if (value[0] == " ") {
+	return value[0].replace(" ","");
+}
+    else if(value[value.length-1] == " "){
+	return value[value.length-1].replace(" ","");
+}
+    return value;
 }
 
 /**
@@ -70,9 +76,13 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	var i = 1;
+	var str = value;
+	while(i < count){
+		str = str + value;
 }
-
+    return str; 
+}
 /**
  * Remove the first occurrence of string inside another string
  *
@@ -86,7 +96,14 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	const l = value.length;
+	for(let i = 0; i <= str.length - l; i++){
+		if (str.substr(i, l) === value){
+			str = str.replace(value, "");
+			return str;
+		}
+}
+return str;
 }
 
 /**
@@ -100,8 +117,9 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
-}
+	str = str.toUpperCase();
+	return str;
+
 
 /**
  * Encode specified string with ROT13 cipher
@@ -120,9 +138,20 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
-}
+	let new_str = "";
+	const length = str.length;
+	for(let i = 0; i < length; i++){
+		if((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')){
+			letter = string.charCodeAt(ascii(str[i]) + 13);
+			new_str = new_str+letter;
 
+		}
+		else{
+			new_str = new_str + str[i];
+		}
+	}
+		return new_str;
+}
 module.exports = {
 	concatenateStrings,
 	getStringLength,

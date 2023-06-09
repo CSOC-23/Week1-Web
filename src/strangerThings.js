@@ -11,7 +11,12 @@ function sleep(ms) {
 TODO:
 This function should return a list of all the distinct characters in UPPERCASE that have been typed in the textbox with the id "message"
 */
-function getCharacters() {}
+function getCharacters() {
+	li = []
+	var text = document.getElementById("message").value.toUpperCase();
+	li.push(text);
+	return li;
+}
 
 /* 
 Sets the CSS properties of the DOM elements to create a nice visual effect
