@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1.concat(value2);
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value.charAt(0);
 }
 
 /**
@@ -55,7 +55,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	return value.trim();
 }
 
 /**
@@ -70,7 +70,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let str = "";
+	for(let i=0; i<count; i++){
+        str+=value;
+	}
+	return str;
 }
 
 /**
@@ -86,7 +90,12 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	if(!str.includes(value)){
+	return str;
+	}else{
+	let id = str.indexOf(value);
+	return (str.slice(0,id) + str.slice(id+value.length));
+	}
 }
 
 /**
@@ -100,7 +109,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return str.toUpperCase();
 }
 
 /**
@@ -119,8 +128,36 @@ function convertToUpperCase(str) {
  *          'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
+function ascii(a){
+	return a.charCodeAt(0);
+}
+function char(z){
+	return String.fromCharCode(z);
+}
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let str1 = "";
+	for(let i=0;i<str.length;i++){
+		let convert = ascii(str.charAt(i)) + 13;
+	
+	let p = str.charAt(i);
+	if(ascii(p) >= ascii("A") && ascii(p) <= ascii("Z")){
+		if(convert <= ascii("Z")){
+			p = char(convert);
+		}else{
+			p = char(convert - ascii("Z") + ascii("A") -1);
+		}
+	}
+	else if(ascii(p) >= ascii("a") && ascii(p) <= ascii("z")){
+		if(convert <= ascii("z")){
+                p = char(convert);
+            }
+            else{
+                p = char(convert - ascii("z") + ascii("a") -1);
+            }
+	}
+	str1 += p;
+	};
+	return str1;
 }
 
 module.exports = {
