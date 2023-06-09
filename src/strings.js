@@ -11,7 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return value1.concat(value2);
 }
 
 /**
@@ -26,7 +27,8 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +42,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value.charAt(0);
 }
 
 /**
@@ -55,7 +57,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return value.trim();
 }
 
 /**
@@ -70,7 +73,8 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return value.repeat(count);
 }
 
 /**
@@ -86,7 +90,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return str.replace(value,'');
 }
 
 /**
@@ -100,7 +105,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return str.toUpperCase();
 }
 
 /**
@@ -120,7 +126,12 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return str.replace(/[a-zA-Z]/g, function(char) {
+		var code = char.charCodeAt(0);
+		var offset = code < 91 ? 65 : 97;
+		return String.fromCharCode(((code - offset + 13) % 26) + offset);
+	  });
 }
 
 module.exports = {

@@ -76,7 +76,7 @@ function removeFalsyValues(arr) {
  */
 function getStringsLength(arr) {
 	// throw new Error("Not implemented");
-	return arr.map(n => n.length());
+	return arr.map(n => n.length);
 }
 
 /**
