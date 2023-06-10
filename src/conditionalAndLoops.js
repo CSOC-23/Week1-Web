@@ -19,7 +19,18 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3===0 && num%5===0){
+		return 'FizzBuzz'
+	}
+	else if(num%3===0){
+		return 'Fizz'
+	}
+	else if(num%5===0){
+		return 'Buzz'
+	}else {
+		return num
+	}
+
 }
 
 /**
@@ -34,7 +45,13 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	var fact
+	if(n==0){
+		return 1
+	}else{
+		fact=n*getFactorial(n-1)
+		return fact
+	}
 }
 
 /**
@@ -50,7 +67,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	var sum=0
+	for(var i=n1;i<=n2;i++){
+		sum=sum+i
+	}
+	return sum
 }
 
 /**
@@ -69,8 +90,13 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if ((a + b > c && b + c > a && c + a > b) && (a !== 0 && b !== 0 && c !== 0)) {
+		return true;
+	} else {
+		return false;
+	}
 }
+
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -85,7 +111,10 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	var arr=str.split("")
+	var str2=arr.reverse()
+	var join= str2.join("")
+	return join
 }
 
 /**
@@ -110,8 +139,27 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
-}
+	const stack = [];
+	const openingBrackets = ['[', '(', '{', '<'];
+	const closingBrackets = [']', ')', '}', '>'];
+  
+	for (let i = 0; i < str.length; i++) {
+	  const currentBracket = str[i];
+  
+	  if (openingBrackets.includes(currentBracket)) {
+		stack.push(currentBracket);
+	  } else if (closingBrackets.includes(currentBracket)) {
+		const matchingOpeningBracket = openingBrackets[closingBrackets.indexOf(currentBracket)];
+  
+		if (stack.length === 0 || stack.pop() !== matchingOpeningBracket) {
+		  return false;
+		}
+	  }
+	}
+  
+	return stack.length === 0;
+}  
+  
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
