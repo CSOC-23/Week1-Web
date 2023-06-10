@@ -26,8 +26,10 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	let value=(value1+value2)/2;
-	return(value);
+	if (value1+value2==Infinity)
+	return (Number.MAX_VALUE);
+	else
+	return (value1 + value2) / 2;
 }
 
 /**
