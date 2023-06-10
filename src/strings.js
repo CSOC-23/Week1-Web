@@ -1,4 +1,4 @@
-/**
+ /**
  * Returns the result of concatenation of two strings.
  *
  * @param {string} value1
@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+    return value1.concat(value2);
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+    return value.length;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+    return value[0];
 }
 
 /**
@@ -55,7 +55,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+    return value.trim();
 }
 
 /**
@@ -70,7 +70,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+    let value1 = "";
+    for (let i = count; i > 0; i--)
+        value1 = value1.concat(value);
+
+    return value1;
 }
 
 /**
@@ -86,7 +90,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+    return str.replace(value, "");
 }
 
 /**
@@ -100,7 +104,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+    return str.toUpperCase();
 }
 
 /**
@@ -120,16 +124,47 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+    let length = str.length;
+    let encoded = '';
+    let val = 0;
+    let left = 0;
+    for (let i = 0; i < length; i++) {
+        val = str.charCodeAt(i);
+        if (val < 65 || val > 120) {
+            encoded += str[i];
+        }
+        if (val > 90 || val < 65) {
+            encoded += str[i];
+        }
+
+        if (val > 64 && val < 91) {
+            if (val + 13 < 91) {
+                encoded += String.fromCharCode(val + 13);
+            } else {
+                left = 90 - val;
+                encoded += String.fromCharCode(65 + (13 - left - 1));
+            }
+        }
+        if (val > 96 && val < 123) {
+            if (val + 13 < 123) {
+                encoded += String.fromCharCode(val + 13);
+            } else {
+                left = 122 - val;
+                encoded += String.fromCharCode(97 + (13 - left - 1));
+            }
+        }
+    }
+
+    return encoded;
 }
 
 module.exports = {
-	concatenateStrings,
-	getStringLength,
-	getFirstChar,
-	removeLeadingAndTrailingWhitespaces,
-	repeatString,
-	removeFirstOccurrences,
-	convertToUpperCase,
-	encodeToRot13,
+    concatenateStrings,
+    getStringLength,
+    getFirstChar,
+    removeLeadingAndTrailingWhitespaces,
+    repeatString,
+    removeFirstOccurrences,
+    convertToUpperCase,
+    encodeToRot13,
 };
