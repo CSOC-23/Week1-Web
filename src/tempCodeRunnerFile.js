@@ -1,0 +1,1 @@
+Removes a leading and trailing whitespace characters from string.

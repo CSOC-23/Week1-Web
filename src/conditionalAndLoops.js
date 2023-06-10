@@ -135,7 +135,29 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	
+	let arr = [];
+  const openingBrackets = ['[', '(', '{', '<'];
+  const closingBrackets = [']', ')', '}', '>'];
+  const bracketPairs = {
+    '[': ']',
+    '(': ')',
+    '{': '}',
+    '<': '>',
+  };
+  
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+	if(closingBrackets.includes(char))
+		return false;
+    if (openingBrackets.includes(char)) {
+      arr.push(char);
+    } else if (closingBrackets.includes(char)) {
+      if (arr.length == 0 || bracketPairs[arr.pop()] != char) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
 /**
@@ -193,10 +215,19 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(num, n) {
-	throw new Error("Not implemented");
-}
-
+	function toNaryString(num, n) {
+		var p =1;
+		var y=0;
+		var x;
+		while(num>0){
+			x=num%n;
+			y = y+p*x;
+			num = Math.floor(num/n);
+			p=p*10;
+			x=0;
+		}
+		return y.toString();
+	}
 module.exports = {
 	getFizzBuzz,
 	getFactorial,
