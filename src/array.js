@@ -1,4 +1,4 @@
-/**
+ /**
  * Returns an index of the specified element in array or -1 if element is not found
  *
  * @param {array} arr
@@ -11,7 +11,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
+    return arr.indexOf(value);
 }
 
 /**
@@ -27,7 +27,11 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+        arr.push(arr[i]);
+    }
+    return arr;
 }
 
 /**
@@ -42,7 +46,7 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
+    return arr.filter((x) => x > 0);
 }
 
 /**
@@ -59,7 +63,7 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
+    return arr.filter(Boolean);
 }
 
 /**
@@ -73,7 +77,8 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
+    return arr.map((str) => str.length);
+
 }
 
 /**
@@ -89,14 +94,15 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+    return arr.reduce((prev, cur) => prev + cur, 0);
+
 }
 
 module.exports = {
-	findElement,
-	doubleArray,
-	getArrayOfPositives,
-	removeFalsyValues,
-	getStringsLength,
-	getItemsSum,
+    findElement,
+    doubleArray,
+    getArrayOfPositives,
+    removeFalsyValues,
+    getStringsLength,
+    getItemsSum,
 };
