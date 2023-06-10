@@ -19,7 +19,12 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	let res;
+	if(num%3 === 0 && num%5 !== 0) res = 'Fizz';
+	else if(num%5 === 0 && num%3 !== 0) res = 'Buzz';
+	else if(num%5 === 0 && num%3 === 0) res = 'FizzBuzz';
+	else res=num;
+	return res;
 }
 
 /**
@@ -34,7 +39,15 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	let res=1;
+	if(n === 0 || n ===1){
+		return 1;
+	}
+	else{
+		while(n!==1){
+			return n*getFactorial(n-1);
+		}
+	}
 }
 
 /**
@@ -50,7 +63,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum=0;
+	for(let i=n1 ; i<=n2 ; i++){
+		sum += i;
+	}
+	return sum;
 }
 
 /**
@@ -69,7 +86,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	return ( ((a+b)>c ) && ((b+c)>a) && ((c+a)>b) );
 }
 
 /**
@@ -85,7 +102,13 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let arr = str.split('');
+	for(let i=0 ; i<((str.length)/2) ; i++){
+		let temp = arr[str.length-i-1];
+		arr[str.length-i-1] = arr[i];
+		arr[i] = temp;
+	}
+	return arr.join('') ;
 }
 
 /**
@@ -110,7 +133,25 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let stack = [];
+	let open = ['[' , '(' , '{' , '<'];
+	let close = [']', ')' , '}' , '>'];
+
+	for(let i=0 ; i< str.length ; i++){
+		if(open.includes(str[i])){
+			stack.push(str[i]);
+		}
+		else if(close.includes(str[i])){
+			let c = stack.pop();
+			if(close.indexOf(str[i]) !== open.indexOf(c)){
+				return false;
+			}
+		}
+	}
+	if(stack.length===0){
+		return true;
+	}
+	else return false;
 }
 
 /**
@@ -145,7 +186,65 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	let diff = endDate.valueOf() - startDate.valueOf();
+	let secDiff = diff/1000;
+	let minDiff = secDiff/60;
+	let hourDiff = minDiff/60;
+	let dayDiff = hourDiff/24;
+
+	if(secDiff<=45){
+		return "a few seconds ago";
+	}
+	else if(secDiff>45 && secDiff<=90){
+		return "a minute ago";
+	}
+	else if(minDiff <= 45){
+		if(secDiff <=120) return '2 minutes ago';
+		else return `${Math.floor(minDiff)} minutes ago`;
+	}
+	else if(minDiff <= 90){
+		return "an hour ago";
+	}
+	else if(hourDiff<=22){
+		if(minDiff <=120) return '2 hours ago';
+		else{
+			if(hourDiff-Math.floor(hourDiff) <=0.5) return `${Math.floor(hourDiff)} hours ago`;
+			else return `${Math.ceil(hourDiff)} hours ago`;
+		}
+	}
+	else if(hourDiff<=36){
+		return "a day ago";
+	}
+	else if(dayDiff<=25){
+		if(hourDiff <=48) return '2 days ago';
+		else{
+			if(dayDiff-Math.floor(dayDiff) <=0.5) return `${Math.floor(dayDiff)} days ago`;
+			else return `${Math.ceil(dayDiff)} days ago`;
+		}
+	}
+	else if(dayDiff<=45){
+		return "a month ago";
+	}
+	else if(dayDiff<345){
+		if(dayDiff <=60) return '2 months ago';
+		else{
+			if((dayDiff/30)-Math.floor(dayDiff/30) <=0.5) return `${Math.floor(dayDiff/30)} months ago`;
+			else return `${Math.ceil(dayDiff/30)} months ago`;
+		}
+	}
+	else if(dayDiff<=545){
+		return "a year ago";
+	}
+	else{
+		if(dayDiff <=727) return '2 years ago';
+		else{
+			if(Math.floor(dayDiff/(12*30)) <=20){
+				if((dayDiff/(12*30))-Math.floor(dayDiff/(12*30)) <=0.5) return `${Math.floor(dayDiff/(12*30))} years ago`;
+				else return `${Math.ceil(dayDiff/30)} months ago`;
+			}
+			else return '20 years ago';
+		}
+	}
 }
 
 /**
@@ -169,7 +268,16 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	let res = '';
+	while(num!==0){
+		res = num%n + res;
+		num = Math.floor(num/n);
+		if(num < n || num ==1){
+			res = num + res;
+			num = Math.floor(num/n);
+		}
+	}
+	return res;
 }
 
 module.exports = {

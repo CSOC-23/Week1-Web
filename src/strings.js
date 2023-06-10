@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1+value2;
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length ;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0];
 }
 
 /**
@@ -55,7 +55,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	return value.trim();
 }
 
 /**
@@ -70,7 +70,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	return value.repeat(count);
 }
 
 /**
@@ -86,7 +86,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	return str.replace(value,'');
 }
 
 /**
@@ -100,7 +100,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return str.toUpperCase();
 }
 
 /**
@@ -120,7 +120,18 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let arr = str.split('');
+	for(let i=0 ; i<arr.length ; i++){
+		if(arr[i].toLowerCase()<='m' && arr[i].toLowerCase() >= 'a'){
+			let x = arr[i].charCodeAt();
+			arr[i] = String.fromCharCode(x+13);
+		}
+		else if(arr[i].toLowerCase()>'m' && arr[i].toLowerCase() <= 'z'){
+			let x = arr[i].charCodeAt();
+			arr[i] = String.fromCharCode(x-13);
+		}
+	}
+	return arr.join('');
 }
 
 module.exports = {
