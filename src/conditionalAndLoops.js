@@ -19,8 +19,20 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+  if (num % 3 == 0 && num % 5 == 0) {
+    return "FizzBuzz"
+  }
+  else if (num % 3 == 0) {
+    return "Fizz"
+  }
+  else if (num % 5 ==0) {
+    return "Buzz"
+  }
+  else {
+    return num
+  }	
 }
+getFizzBuzz(15);
 
 /**
  * Returns the factorial of the specified integer n.
@@ -34,8 +46,22 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+  if (n === 0 || n === 1) {
+    return 1
+  }
+
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
+  }
+
+  return result;
 }
+console.log(getFactorial(0))
+console.log(getFactorial(1))
+console.log(getFactorial(5))
+
+
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -50,9 +76,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let result = 0 ;
+	for (let i= n1;i<=n2;i++) {
+		result +=i;
+	}
+    return result;  
 }
-
+console.log(getSumBetweenNumbers(5,10))
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false
  * in any other ways.
@@ -69,8 +99,15 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
-}
+  if (a + b > c && a + c > b && b + c > a ) {
+    return true;
+  }
+  return false;
+  }
+
+console.log(isTriangle(3, 4, 5));
+console.log(isTriangle(1, 2, 4)); 
+
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -85,8 +122,15 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+  let revstr = '';
+  let l = str.length
+  for (let i = l - 1; i >= 0; i--) {
+    revstr+= str[i];
+  }
+  return revstr;
 }
+console.log(reverseString("abracadabra")); 
+console.log(reverseString("rotator")); 
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
@@ -107,11 +151,35 @@ function reverseString(str) {
  *   '[[][][[]]]' => true
  *   '[[][]][' => false
  *   '{)' = false
- *   '{[(<{[]}>)]}' = true
- */
+ *   '{[(<{[]}>)]}'= true
+ */ 
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+  let list = [];
+  let openingBrackets = ['[', '(', '{', '<'];
+  let closingBrackets = [']', ')', '}', '>'];
+  let matchingBrackets = {
+    ']': '[',
+    ')': '(',
+    '}': '{',
+    '>': '<'
+  };
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+
+    if (openingBrackets.includes(char)) {
+      list.push(char);
+    } else if (closingBrackets.includes(char)) {
+      let lastOpeningBracket = list.pop();
+      if (matchingBrackets[char] !== lastOpeningBracket) {
+        return false;
+      }
+    }
+  }
+  return list.length === 0;
 }
+
+console.log(isBracketsBalanced('{[(<{[]}>)]}'))
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -144,13 +212,56 @@ function isBracketsBalanced(str) {
  *   Date('2000-01-01 01:00:00.100'), Date('2015-01-02 03:00:05.000')  => '15 years ago'
  *
  */
-function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
-}
 
+// function timespanToHumanString(startDate, endDate) {
+//   const start = new Date(startDate);
+//   const end = new Date(endDate);
+//   const timeDiff = end.getTime() - start.getTime();
+  
+//   const seconds = Math.floor(timeDiff / 1000);
+//   const minutes = Math.floor(seconds / 60);
+//   const hours = Math.floor(minutes / 60);
+//   const days = Math.floor(hours / 24);
+//   const years = Math.floor(days / 365);
+
+//   if (years > 0) {
+//     if (years==1) {
+//       return "a year ago" ;
+//     }
+//     return `${years} ${'years'} ago`;
+//   } 
+//   else if (days > 0) {
+//     if (days==1) {
+//       return "a day ago" ;
+//     }
+//     else {
+//     return `${days} ${'days'} ago`;
+//     }
+//   } else if (hours > 0) {
+//     if (hours==1) {
+//       return "an hour ago" ;
+//     }
+//     else {
+//     return `${hours} ${'hours'} ago`;
+//     }  
+//   } else if (minutes > 0) {
+//     if (minutes==1) {
+//       return "a minute ago" ;
+//     }
+//     else {
+//     return `${minutes} ${'minutes'}ago`;
+//     }
+//   } else {
+//     return 'a few seconds ago';
+//   }
+// }
+// console.log(timespanToHumanString('2000-01-01 01:00:00.100', '2000-01-01 01:00:00.200'));
+// console.log(timespanToHumanString('2000-01-01 01:00:00.100', '2000-01-02 03:00:05.000'));
+// console.log(timespanToHumanString('2000-01-01 01:00:00.100', '2000-01-01 01:00:05.000'));
+// console.log(timespanToHumanString('2000-01-01 01:00:00.100', '2015-01-02 03:00:05.000'));
 /**
- * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
- * specified number.
+* Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
+ * specified number. 
  * See more about
  * https://en.wikipedia.org/wiki/Binary_number
  * https://en.wikipedia.org/wiki/Ternary_numeral_system
@@ -169,8 +280,19 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+       if (num === 0) {
+    return '0';
+  }
+
+  let toNary = '';
+  
+  while (num > 0) {
+    toNary = (num % n) + toNary;
+    num = Math.floor(num / n);
+  }
+  return toNary;
 }
+console.log(toNaryString(1024, 2)) ; 
 
 module.exports = {
 	getFizzBuzz,
