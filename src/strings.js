@@ -11,7 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return(value1.concat(value2));
 }
 
 /**
@@ -26,7 +27,8 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return(value.length);
 }
 
 /**
@@ -40,7 +42,8 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return(value[0]);
 }
 
 /**
@@ -55,7 +58,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return(value.trim());
 }
 
 /**
@@ -70,7 +74,13 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	var newValue=value;
+	for(let i=1;i<count;i++)
+	{
+		newValue=newValue.concat(value);
+	}
+	return newValue;
 }
 
 /**
@@ -86,7 +96,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return(str.replace(value,''));
 }
 
 /**
@@ -100,7 +111,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return(str.toUpperCase());
 }
 
 /**
@@ -120,7 +132,8 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	
 }
 
 module.exports = {

@@ -138,7 +138,28 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	li = []
+    const opening_brackets = ['[', '(', '{', '<'];
+	const closing_brackets = [']', ')', '}', '>'];
+	for (let i = 0; i < str.length; i++) {
+		if (opening_brackets.includes(str[i])){
+			li.push(str[i]);
+		}
+		else if (closing_brackets.includes(str[i])){
+			if (li.length === 0) {
+				return false;
+			}
+			else {
+				const last = li.pop();
+				if (opening_brackets.indexOf(last) !== closing_brackets.indexOf(str[i])) {
+					return false;
+				}
+			}
+		}
+	}
+	return li.length === 0;
+
 }
 
 /**
@@ -173,7 +194,38 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	const diff = endDate - startDate;
+		const seconds = Math.floor(diff / 1000);
+		const minutes = Math.floor(seconds / 60);
+		const hours = Math.floor(minutes / 60);
+		const days = Math.floor(hours / 24);
+		const months = Math.floor(days / 30);
+		const years = Math.floor(days / 365);
+
+		if (seconds <= 45) {
+		  return "a few seconds ago";
+		} else if (45 < seconds <= 90) {
+		  return "a minute ago";
+		} else if (120 < seconds <= 45 * 60) {
+		  return `${minutes} minutes ago`;
+		} else if (45 * 60 < seconds <= 90 * 60) {
+		  return "an hour ago";
+		} else if (90 * 60 < seconds <= 22 * 60 * 60) {
+		  return `${hours} hours ago`;
+		} else if (22 * 60 * 60 < seconds <= 36 * 60 * 60) {
+		  return "a day ago";
+		} else if (36 * 60 * 60 < seconds <= 25 * 24 * 60 * 60) {
+		  return `${days} days ago`;
+		} else if (25 * 24 * 60 * 60 < seconds <= 45 * 24 * 60 * 60) {
+		  return "a month ago";
+		} else if (45 * 24 * 60 * 60 < seconds <= 345 * 24 * 60 * 60) {
+		  return `${months} months ago`;
+		} else if (345 * 24 * 60 * 60 < seconds <= 545 * 24 * 60 * 60) {
+		  return "a year ago";
+		} else {
+		  return `${years} years ago`;
+		}
 }
 
 /**
@@ -197,7 +249,8 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	return num.toString(n);
 }
 
 module.exports = {
