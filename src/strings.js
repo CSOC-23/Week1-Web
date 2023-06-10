@@ -11,8 +11,9 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1+value2 ;
 }
+console.log(concatenateStrings('ab','bb'));
 
 /**
  * Returns the length of given string.
@@ -26,8 +27,10 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length ;
 }
+console.log(getStringLength('aaaaa'));
+
 
 /**
  * Returns a first char of the given string.
@@ -40,8 +43,9 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0] ;
 }
+console.log(getFirstChar('John Doe')) ;
 
 /**
  * Removes a leading and trailing whitespace characters from string.
@@ -55,8 +59,11 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	return value.trim() ;
 }
+
+console.log(removeLeadingAndTrailingWhitespaces('  Abracadabra'));
+console.log(removeLeadingAndTrailingWhitespaces('\tHello, World! '));
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -70,9 +77,14 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let a = ""
+	for (let i = 0;i<count ;i++) {
+       a+=value ;
+	}
+	return a ;
 }
 
+console.log(repeatString('A', 5)) ;
 /**
  * Remove the first occurrence of string inside another string
  *
@@ -86,8 +98,13 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+  let index = str.indexOf(value);
+  if (index !== -1) {
+    return str.slice(0, index) + str.slice(index + value.length);
+  }
+  return str;
 }
+console.log(removeFirstOccurrences('To be or not to be', 'not')) ;
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -100,8 +117,9 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return str.toUpperCase() ;
 }
+console.log(convertToUpperCase('Thunderstruck')) ;
 
 /**
  * Encode specified string with ROT13 cipher
@@ -120,9 +138,13 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+  return str.replace(/[a-zA-Z]/g, function (char) {
+    let baseCharCode = char <= 'Z' ? 65 : 97;
+    return String.fromCharCode((char.charCodeAt(0) - baseCharCode + 13) % 26 + baseCharCode);
+  });
 }
 
+console.log('Hello, World!'); 
 module.exports = {
 	concatenateStrings,
 	getStringLength,
