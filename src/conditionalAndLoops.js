@@ -19,7 +19,15 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3==0 && num%5==0){
+        return 'FizzBuzz';
+    }else if(num%5==0){
+        return 'Buzz';
+    }else if(num%3==0){
+        return 'Fizz';
+    }else{
+        return num;
+    }
 }
 
 /**
@@ -34,7 +42,10 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	if(n==0 || n==1){
+        return n;
+    }
+	return n*getFactorial(n-1);
 }
 
 /**
@@ -50,7 +61,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let i=n2-n1+1;
+    let total=0;
+	while(i--){
+        total= total+n1;
+        ++n1;
+    } return total;
 }
 
 /**
@@ -69,7 +85,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if((a+b)<=c || (a+c)<=b || (b+c)<=a){
+        return false;
+    }else{
+        return true;
+    }
 }
 
 /**
@@ -85,8 +105,15 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let n=str.length;
+	let array=str.split(''); 
+	for (let i=0; i<n/2;i++){
+		let temp = array[i];
+		array[i] = array[n - 1 - i];
+		array[n - 1 - i] = temp;
+	}return array.join('');
 }
+
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
@@ -169,8 +196,24 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	if(num===0) {
+		return '0';
+	  }
+	
+	  let result = "";
+	  let absnum = Math.abs(num);
+	
+	  while (absnum > 0) {
+		result = (absnum%n) + result;
+		absnum = Number.parseInt(absnum / n);
+	  }
+	 if(num>=0){
+		return result;
+	 }else {
+		return "-"+result;
+	 }
 }
+
 
 module.exports = {
 	getFizzBuzz,
