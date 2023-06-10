@@ -19,8 +19,21 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
-}
+	if (num % 5 === 0 && num % 3 === 0) 
+	{
+	  return 'FizzBuzz';
+	} 
+	else if (num % 3 === 0) {
+	  return 'Fizz';
+	} 
+	else if (num % 5 === 0) {
+	  return 'Buzz';
+	} 
+	else {
+	  return num;
+	}
+  }
+  
 
 /**
  * Returns the factorial of the specified integer n.
@@ -34,9 +47,18 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
-}
-
+	if (n === 0 || n === 1) {
+	  return 1;
+	}
+  
+	let ans = 1;
+	for (let i = 2; i <= n; i++) {
+	  ans *= i;
+	}
+  
+	return ans;
+  }
+  
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
  *
@@ -50,8 +72,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
-}
+	let sum = 0;
+	for (let i = n1; i <= n2; i++) {
+	  sum += i;
+	}
+	return sum;
+  }
+  
 
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false
@@ -69,9 +96,13 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
-}
-
+	if(a + b > c && a + c > b && b + c > a)
+	{
+         return true;
+	}
+	else false;
+  }
+  
 /**
  * Reverse the specified string (put all chars in reverse order)
  *
@@ -85,7 +116,14 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let s=0;
+	let e=str.length-1;
+	while(s<e)
+	{
+		swap(str[s++],str[e--]);
+	}
+	return str;
+	
 }
 
 /**
@@ -110,8 +148,44 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
-}
+	const stack = [];
+  
+	for (let i = 0; i < str.length; i++) {
+	  const bracket = str[i];
+	  if (isOpeningBracket(bracket)) {
+		stack.push(bracket);
+	  } else if (isClosingBracket(bracket)) {
+		if (stack.length === 0) {
+		  return false;
+		}
+  
+		const openingBracket = stack.pop();
+		if (!isMatchingBracket(openingBracket, bracket)) {
+		  return false;
+		}
+	  }
+	}
+  
+	return stack.length === 0;
+  }
+  
+  function isOpeningBracket(bracket) {
+	return bracket === '[' || bracket === '(' || bracket === '{' || bracket === '<';
+  }
+  
+  function isClosingBracket(bracket) {
+	return bracket === ']' || bracket === ')' || bracket === '}' || bracket === '>';
+  }
+  
+  function isMatchingBracket(openingBracket, closingBracket) {
+	return (
+	  (openingBracket === '[' && closingBracket === ']') ||
+	  (openingBracket === '(' && closingBracket === ')') ||
+	  (openingBracket === '{' && closingBracket === '}') ||
+	  (openingBracket === '<' && closingBracket === '>')
+	);
+  }
+  
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -145,9 +219,40 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
-}
-
+	const timeDifference = endDate.getTime() - startDate.getTime();
+	const seconds = Math.floor(timeDifference / 1000);
+  
+	if (seconds >= 0 && seconds <= 45) {
+	  return 'a few seconds ago';
+	} else if (seconds > 45 && seconds <= 90) {
+	  return 'a minute ago';
+	} else if (seconds > 90 && seconds <= 45 * 60) {
+	  const minutes = Math.round(seconds / 60);
+	  return `${minutes} minutes ago`;
+	} else if (seconds > 45 * 60 && seconds <= 90 * 60) {
+	  return 'an hour ago';
+	} else if (seconds > 90 * 60 && seconds <= 22 * 60 * 60) {
+	  const hours = Math.round(seconds / (60 * 60));
+	  return `${hours} hours ago`;
+	} else if (seconds > 22 * 60 * 60 && seconds <= 36 * 60 * 60) {
+	  return 'a day ago';
+	} else if (seconds > 36 * 60 * 60 && seconds <= 25 * 24 * 60 * 60) {
+	  const days = Math.round(seconds / (24 * 60 * 60));
+	  return `${days} days ago`;
+	} else if (seconds > 25 * 24 * 60 * 60 && seconds <= 45 * 24 * 60 * 60) {
+	  return 'a month ago';
+	} else if (seconds > 45 * 24 * 60 * 60 && seconds <= 345 * 24 * 60 * 60) {
+	  const months = Math.floor(seconds / (30 * 24 * 60 * 60));
+	  return `${months} months ago`;
+	} else if (seconds > 345 * 24 * 60 * 60 && seconds <= 545 * 24 * 60 * 60) {
+	  return 'a year ago';
+	} else if (seconds > 545 * 24 * 60 * 60) {
+	  const years = Math.floor(seconds / (365 * 24 * 60 * 60));
+	  return `${years} years ago`;
+	}
+  }
+  
+  
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
  * specified number.
@@ -169,9 +274,17 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
-}
-
+	let result = '';
+  
+	while (num > 0) {
+	  const remainder = num % n;
+	  result = remainder + result;
+	  num = Math.floor(num / n);
+	}
+  
+	return result;
+  }
+  
 module.exports = {
 	getFizzBuzz,
 	getFactorial,

@@ -11,8 +11,16 @@ function sleep(ms) {
 TODO:
 This function should return a list of all the distinct characters in UPPERCASE that have been typed in the textbox with the id "message"
 */
-function getCharacters() {}
-
+function getCharacters() {
+	const messageInput = document.getElementById("message");
+	const messageValue = messageInput.value.toUpperCase();
+	const characters = messageValue
+	  .split("")
+	  .filter((char) => /[A-Z]/.test(char));
+	const distinctCharacters = [...new Set(characters)];
+	return distinctCharacters;
+  }
+  
 /* 
 Sets the CSS properties of the DOM elements to create a nice visual effect
 TODO: Play with the colour codes provided to create a theme which has more resemblance to Netflix's Stranger Things
@@ -51,10 +59,15 @@ async function setCSS(character) {
 	await sleep(500);
 }
 
-async function illuminateLight(index) {
+async function illuminateLight() {
 	const message = getCharacters();
-
+	for (const character of message) {
+	  await setCSS(character);
+	  await sleep(1000);
+	}
+  }
+  
 	/*
     TODO: Call the setCSS function asynchronously for each character present in the message array
     */
-}
+

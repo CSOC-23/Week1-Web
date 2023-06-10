@@ -11,8 +11,9 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
-}
+	return value1 + value2;
+  }
+  
 
 /**
  * Returns the length of given string.
@@ -26,8 +27,9 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
-}
+	return value.length;
+  }
+  
 
 /**
  * Returns a first char of the given string.
@@ -40,8 +42,9 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
-}
+	return value[0];
+  }
+  
 
 /**
  * Removes a leading and trailing whitespace characters from string.
@@ -55,8 +58,9 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
-}
+	return value.trim();
+  }
+  
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -70,8 +74,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
-}
+	return value.repeat(count);
+  }
+  
 
 /**
  * Remove the first occurrence of string inside another string
@@ -86,8 +91,9 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
-}
+	return str.replace(value, "");
+  }
+  
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -100,8 +106,9 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
-}
+	return str.toUpperCase();
+  }
+  
 
 /**
  * Encode specified string with ROT13 cipher
@@ -120,8 +127,24 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
-}
+	const charCodeA = "A".charCodeAt(0);
+	const charCodeZ = "Z".charCodeAt(0);
+	const charCodea = "a".charCodeAt(0);
+	const charCodez = "z".charCodeAt(0);
+  
+	return str.replace(/[a-z]/gi, (char) => {
+	  let charCode = char.charCodeAt(0);
+  
+	  if (charCode >= charCodeA && charCode <= charCodeZ) {
+		charCode = ((charCode - charCodeA + 13) % 26) + charCodeA;
+	  } else if (charCode >= charCodea && charCode <= charCodez) {
+		charCode = ((charCode - charCodea + 13) % 26) + charCodea;
+	  }
+  
+	  return String.fromCharCode(charCode);
+	});
+  }
+  
 
 module.exports = {
 	concatenateStrings,

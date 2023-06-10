@@ -11,8 +11,16 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
-}
+	for (let i = 0; i < arr.length; i++) 
+	{
+	  if (arr[i] === value) 
+	  {
+		return i;
+	  }
+	}
+	  return -1;
+  }
+  
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice
@@ -27,8 +35,9 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.concat(arr);
+  }
+  
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -42,8 +51,9 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.filter((num) => num > 0);
+  }
+  
 
 /**
  * Removes falsy values from the specified array
@@ -59,9 +69,9 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
-}
-
+	return arr.filter(Boolean);
+  }
+  
 /**
  * Returns the array of string lengths from the specified string array.
  *
@@ -73,8 +83,9 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.map((str) => str.length);
+  }
+  
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -89,7 +100,12 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+	let sum=0;
+	for (let i=0;i<arr.length;i++)
+	{
+          sum+=arr[i];
+	}
+	return sum;
 }
 
 module.exports = {
