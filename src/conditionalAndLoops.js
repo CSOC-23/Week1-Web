@@ -19,7 +19,21 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	x=parseInt(num);
+	s="Fizz";
+	t="Buzz";
+	p="FizzBuzz";
+	if(x%3==0 && x%5==0){
+		return p;
+	}
+	else if(x%3==0){
+		return s;
+	}
+	else if(x%5==0){
+		return t;
+	}
+	else return x;
 }
 
 /**
@@ -34,7 +48,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	x=parseInt(n);
+	if(x==0 || x==1){
+		return 1;
+	}
+	else return x*getFactorial(x-1);
 }
 
 /**
@@ -50,7 +69,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	answer=0;
+	for(var i=n1; i<=n2; i++){
+		answer+=i;
+	}
+	return answer;
 }
 
 /**
@@ -69,7 +93,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	if(a+b>c && b+c>a && a+c>b){
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -85,7 +113,12 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	answer="";
+	for(var i=str.length-1; i>=0; i--){
+		answer+=str[i];
+	}
+	return answer;
 }
 
 /**
@@ -110,7 +143,44 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let stack=[];
+	for(var i=0; i<str.length; i++){
+		x=str[i];
+		if(x=='(' || x=='[' || x=='{' || x=='<'){
+			stack.push(x);
+		}
+		else if(stack.length==0){
+			return false;
+		}
+		else{
+			if(x==')'){
+				check=stack.pop();
+				if(check!='('){
+					return false;
+				}
+			}
+			else if(x==']'){
+				check=stack.pop();
+				if(check!='['){
+					return false;
+				}
+			}
+			else if(x=='}'){
+				check=stack.pop();
+				if(check!='{'){
+					return false;
+				}
+			}
+			else if(x=='>'){
+				check=stack.pop();
+				if(check!='<'){
+					return false;
+				}
+			}
+		}
+	}
+	return (stack.length==0);
 }
 
 /**
@@ -170,6 +240,7 @@ function timespanToHumanString(startDate, endDate) {
  */
 function toNaryString(num, n) {
 	throw new Error("Not implemented");
+
 }
 
 module.exports = {
