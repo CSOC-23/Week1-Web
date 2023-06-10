@@ -19,7 +19,10 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3==0 && num%5!=0) return 'Fizz';
+	else if(num%5==0 && num%3!=0) return 'Buzz';
+	else if(num%3==0 && num%5==0) return 'FizzBuzz';
+	else return num;
 }
 
 /**
@@ -34,7 +37,8 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	if(n==0 || n==1) return 1;
+	return n*getFactorial(n-1);
 }
 
 /**
@@ -50,7 +54,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum=0;
+	for(let i=n1;i<=n2;i++){
+		sum=sum+i;
+	}
+	return sum;
 }
 
 /**
@@ -69,7 +77,8 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if((a+b)>c && (b+c)>a && (c+a)>b) return true;
+	else return false;
 }
 
 /**
@@ -85,7 +94,11 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+    let revString='';
+	for(let i=str.length-1;i>=0;i--){
+		revString=revString+str[i];
+	}
+	return revString;
 }
 
 /**
@@ -110,7 +123,20 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let splited=str.split("");
+	let stack=[];
+	for(let i=0;i<splited.length;i++){
+		if(splited[i]=='(' || splited[i]=='[' || splited[i]=='{' || splited[i]=='<'){
+			stack.push(splited[i]);
+		}else if(splited[i]==')' || splited[i]==']' || splited[i]=='}' || splited[i]=='>'){
+			if(stack.length==0 || (splited[i]==')' && stack[stack.length-1]!='(') || (splited[i]==']' && stack[stack.length-1]!='[') || (splited[i]=='}' && stack[stack.length-1]!='{') || (splited[i]=='>' && stack[stack.length-1]!='<')){
+				return false;
+			}else{
+				stack.pop();
+			}
+		}
+	}
+	return stack.length==0;
 }
 
 /**
@@ -169,7 +195,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	
 }
 
 module.exports = {
