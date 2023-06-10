@@ -10,6 +10,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
+	return (width*height);
 	throw new Error("Not implemented");
 }
 
@@ -26,7 +27,12 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	throw new Error("Not implemented");
+	var sum = value1 + value2;
+  if (sum == Infinity) {
+    return Number.MAX_VALUE;
+  }
+  return sum / 2;
+		throw new Error("Not implemented");
 }
 
 /**
@@ -42,6 +48,12 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
+	var root=0;
+	if((-b)/a==0){return 0;
+		
+	}
+	else{
+	return (-b)/a;}
 	throw new Error("Not implemented");
 }
 
@@ -58,6 +70,11 @@ function getLinearEquationRoot(a, b) {
  *     0     => 0
  */
 function getLastDigit(value) {
+	if(value>=0){
+
+		return value%10;
+	}
+	else{return -(value%10)}
 	throw new Error("Not implemented");
 }
 
@@ -73,6 +90,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
+	return parseFloat(value);
 	throw new Error("Not implemented");
 }
 
@@ -94,6 +112,18 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
+	
+		if (n < 2) {
+			return false;
+		}
+		for (var i = 2; i <= Math.sqrt(n); i++) {
+			if (n % i === 0) {
+				return false;
+			}
+		}
+		return true;
+	
+	
 	throw new Error("Not implemented");
 }
 

@@ -11,6 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
+	return value1+value2;
 	throw new Error("Not implemented");
 }
 
@@ -26,6 +27,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
+	return value.length;
 	throw new Error("Not implemented");
 }
 
@@ -40,6 +42,8 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
+	var char=value.split('');
+	return char[0];
 	throw new Error("Not implemented");
 }
 
@@ -55,6 +59,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
+	return value.trim();
 	throw new Error("Not implemented");
 }
 
@@ -70,6 +75,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
+	var newstr=value;
+	for(var i=1;i<count;i++){
+		newstr=newstr+value;
+	}
+	return newstr;
 	throw new Error("Not implemented");
 }
 
@@ -86,6 +96,9 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
+	var index=str.indexOf(value);
+	newstr=str.replace(value,"");
+	return newstr;
 	throw new Error("Not implemented");
 }
 
@@ -100,6 +113,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
+	return str.toUpperCase();
 	throw new Error("Not implemented");
 }
 
@@ -120,6 +134,21 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
+	var encodedStr = "";
+	for (var i = 0; i < str.length; i++) {
+	  var char = str[i];
+	  var cc = char.charCodeAt(0);
+  
+	  if ((cc >= 65 && cc <= 90) || (cc >= 97 && cc <= 122)) {
+		var base = cc <= 90 ? 65 : 97;
+		var encodedCC = (cc - base + 13) % 26 + base;
+		encodedStr += String.fromCharCode(encodedCC);
+	  } else {
+		encodedStr += char;
+	  }
+	}
+	return encodedStr;
+  
 	throw new Error("Not implemented");
 }
 

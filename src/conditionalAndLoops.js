@@ -19,6 +19,19 @@
  *
  */
 function getFizzBuzz(num) {
+	if (num % 3 == 0 && num % 5 != 0) {
+		return ('Fizz');
+	}
+	else if (num % 3 != 0 && num % 5 == 0) {
+		return ('Buzz');
+	}
+	else if (num % 3 == 0 && num % 5 == 0) {
+		return ('FizzBuzz');
+	}
+	else if (num % 3 != 0 && num % 5 != 0) {
+		return (num);
+	}
+
 	throw new Error("Not implemented");
 }
 
@@ -34,6 +47,10 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
+	if (n > 1) {
+		return (n * getFactorial(n - 1));
+	}
+	else { return 1; }
 	throw new Error("Not implemented");
 }
 
@@ -50,6 +67,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
+	const n3 = n2 - n1;
+	var sum = n1;
+	for (var i1 = 0; i1 < n3; i1++) {
+		sum = sum + n1 + i1 + 1;
+	}
+	return sum;
 	throw new Error("Not implemented");
 }
 
@@ -69,6 +92,10 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
+	if (a + b > c && a + c > b && b + c > a) {
+		return true;
+	}
+	else { return false; }
 	throw new Error("Not implemented");
 }
 
@@ -85,6 +112,15 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
+	var strarr = str.split('');
+	for (var i2 = 0; i2 < ((strarr.length) / 2); i2++) {
+		var t = strarr[strarr.length - i2 - 1];
+		strarr[strarr.length - i2 - 1] = strarr[i2];
+		strarr[i2] = t;
+
+	};
+
+	return strarr.join('');
 	throw new Error("Not implemented");
 }
 
@@ -109,9 +145,40 @@ function reverseString(str) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
-}
+
+function  isBracketsBalanced(str) {
+	var stack = [];
+	var openingBrackets = "([{<";
+	var closingBrackets = ")]}>";
+	var brackets = {
+	  "}": "{",
+	  "]": "[",
+	  ")": "(",
+	  ">": "<"
+	};
+  
+	for (var i = 0; i < str.length; i++) {
+	  var char = str[i];
+  
+	  if (openingBrackets.includes(char)) {
+		// Opening bracket
+		stack.push(char);
+	  } else if (closingBrackets.includes(char)) {
+		// Closing bracket
+		var lastOpeningBracket = stack.pop();
+  
+		if (brackets[char] !== lastOpeningBracket) {
+		  // Mismatched closing bracket
+		  return false;
+		}
+	  }
+	}
+  
+	return stack.length === 0; // True if all brackets are matched and popped
+  }
+
+
+
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -145,6 +212,7 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
+
 	throw new Error("Not implemented");
 }
 
