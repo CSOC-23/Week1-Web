@@ -11,8 +11,9 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
-}
+	return arr.indexOf(value);
+  }
+  
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice
@@ -27,7 +28,7 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
+	return arr.concat(arr)
 }
 
 /**
@@ -42,7 +43,13 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
+	var arr2=[]
+	for(var i=0;i<arr.length;i++){
+		if(arr[i]>0){
+			arr2.push(arr[i])
+		}
+	}
+	return arr2
 }
 
 /**
@@ -59,8 +66,22 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
-}
+	var arr2 = [];
+	for (var i = 0; i < arr.length; i++) {
+	  if (
+		arr[i] !== false &&
+		arr[i] !== null &&
+		arr[i] !== 0 &&
+		arr[i] != undefined &&
+		arr[i] != ""
+	  ) {
+		arr2.push(arr[i]);
+	  }
+	  
+	}
+	return arr2.filter(Boolean);
+  }
+  
 
 /**
  * Returns the array of string lengths from the specified string array.
@@ -73,7 +94,13 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
+	var arr2=[]
+	for(var i=0;i<arr.length;i++){
+		var str=""
+		str=arr[i]
+		arr2.push(str.length)
+	}
+	return arr2
 }
 
 /**
@@ -89,7 +116,11 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+	var sum=0
+	for(var i=0;i<arr.length;i++){
+		sum+=arr[i]
+	}
+	return sum
 }
 
 module.exports = {

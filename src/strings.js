@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1+value2
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0]
 }
 
 /**
@@ -55,7 +55,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	return value.trim()
 }
 
 /**
@@ -70,7 +70,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	var test=value
+	for(var i=1;i<count;i++){
+		value+=test
+	}
+	return value
 }
 
 /**
@@ -86,7 +90,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	return str.replace(value, '');
 }
 
 /**
@@ -100,7 +104,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return str.toUpperCase()
 }
 
 /**
@@ -119,9 +123,21 @@ function convertToUpperCase(str) {
  *          'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(str) {
-	throw new Error("Not implemented");
-}
+
+	function encodeToRot13(str) {
+		var encodedStr = '';
+		for (var i = 0; i < str.length; i++) {
+		  var charCode = str.charCodeAt(i);
+		  if (charCode >= 65 && charCode <= 90) {
+			encodedStr += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+		  } else if (charCode >= 97 && charCode <= 122) {
+			encodedStr += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+		  } else {
+			encodedStr += str[i];
+		  }
+		}
+		return encodedStr;
+	  }
 
 module.exports = {
 	concatenateStrings,
