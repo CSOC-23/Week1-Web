@@ -1,4 +1,4 @@
-/**
+ /**
  * Returns an area of a rectangle given by width and heigth.
  *
  * @param {numder} width
@@ -10,7 +10,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-	throw new Error("Not implemented");
+    return width * height;
 }
 
 /**
@@ -26,7 +26,7 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	throw new Error("Not implemented");
+    return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -42,7 +42,8 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-	throw new Error("Not implemented");
+    if (a >> 0)
+        return 0 - (b / a);
 }
 
 /**
@@ -58,8 +59,9 @@ function getLinearEquationRoot(a, b) {
  *     0     => 0
  */
 function getLastDigit(value) {
-	throw new Error("Not implemented");
+    return Math.abs(value % 10);
 }
+
 
 /**
  * Returns a number by given string representation.
@@ -73,7 +75,8 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-	throw new Error("Not implemented");
+
+    return Number(value);
 }
 
 /**
@@ -94,14 +97,26 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
-	throw new Error("Not implemented");
+    let count = 0;
+    for (let i = n; i > 0; i--) {
+        if (n % i === 0) {
+            count++;
+        }
+    }
+
+    if (count === 2) {
+        return true;
+    } else {
+        return false;
+    }
+
 }
 
 module.exports = {
-	getRectangleArea,
-	getAverage,
-	getLinearEquationRoot,
-	getLastDigit,
-	parseNumberFromString,
-	isPrime,
+    getRectangleArea,
+    getAverage,
+    getLinearEquationRoot,
+    getLastDigit,
+    parseNumberFromString,
+    isPrime,
 };
