@@ -11,7 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	let str=`${value1}${value2}`;
+	return str;
 }
 
 /**
@@ -26,7 +27,8 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	let len=value.length;
+	return len;
 }
 
 /**
@@ -40,7 +42,8 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	let first=value.charAt(0);
+	return first;
 }
 
 /**
@@ -55,7 +58,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	let newStr=value.trim();
+	return newStr;
 }
 
 /**
@@ -70,7 +74,8 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	 let str=value.repeat(count); 
+	 return str;
 }
 
 /**
@@ -86,7 +91,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	let newStr=str.replace(value,'');
+	return newStr;
 }
 
 /**
@@ -100,7 +106,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	let newStr=str.toUpperCase();
+	return newStr;
 }
 
 /**
@@ -120,8 +127,19 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
-}
+			const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz !@#$^&%*()+=-[]\/{}|:<>?,.';
+			const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm !@#$^&%*()+=-[]\/{}|:<>?,.';
+			let encoded = '';
+	
+			for (let i=0; i < str.length; i++) {
+				const index = input.indexOf(str[i]);
+				encoded += output[index];
+			}
+			return encoded;
+		
+	} 
+	
+
 
 module.exports = {
 	concatenateStrings,
