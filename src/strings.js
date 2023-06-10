@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1 + value2;
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	;
 }
 
 /**
@@ -86,7 +86,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	return str - value;
 }
 
 /**
@@ -100,7 +100,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return convertToUpperCase(str);
 }
 
 /**

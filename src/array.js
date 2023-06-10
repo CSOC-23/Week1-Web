@@ -11,7 +11,14 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
+	for (let i = 0; i < arr.length; i++){
+		if(arr[i] === value){
+			return i;
+			break;
+		}
+		
+	}
+	return -1;
 }
 
 /**
@@ -27,8 +34,19 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
-}
+	const doubledArr = [];
+	for (let i = 0; i < arr.length; i++) {
+	  doubledArr.push(arr[i]);
+	}
+	for (let i = 0; i < arr.length; i++) {
+	  doubledArr.push(arr[i]);
+	}
+	return doubledArr;
+  }
+  
+  
+  
+  
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -42,8 +60,15 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
-}
+	const result = [];
+	for (let i = 0; i < arr.length; i++) {
+	  if (arr[i] > 0) {
+		result.push(arr[i]);
+	  }
+	}
+	return result;
+  }
+  
 
 /**
  * Removes falsy values from the specified array

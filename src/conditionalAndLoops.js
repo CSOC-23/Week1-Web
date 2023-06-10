@@ -19,8 +19,18 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
-}
+	if(num%3==0 & num%5 != 0){
+		return "Fizz";
+	}
+	else if(num%5==0 & num%3 != 0){
+		return "Buzz";
+	}
+	else if(num%5==0 & num%3 == 0){
+		return "FizzBuzz";
+	}
+	else{
+		return num;
+	}}
 
 /**
  * Returns the factorial of the specified integer n.
@@ -34,7 +44,10 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	if(n==1){
+      return 1;
+	}
+	return n*getFactorial(n-1) ;
 }
 
 /**
@@ -50,9 +63,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum =0;
+	for(let i=n1;i<=n2;i++){
+		sum+=i;
+	}
+	return sum;
 }
-
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false
  * in any other ways.
@@ -69,7 +85,12 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if(a+b>c & a+c>b & b+c>a ){
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 /**
@@ -85,8 +106,10 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	k = str.split("").reverse().join("");
+	return k;
 }
+
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
@@ -110,8 +133,27 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
-}
+	const openingBrackets = ['[', '(', '{', '<'];
+	const closingBrackets = [']', ')', '}', '>'];
+  
+	const stack = [];
+  
+	for (let i = 0; i < str.length; i++) {
+	  const char = str[i];
+  
+	  if (openingBrackets.includes(char)) {
+		stack.push(char);
+	  } else if (closingBrackets.includes(char)) {
+		const matchingOpeningBracket = openingBrackets[closingBrackets.indexOf(char)];
+		if (stack.length === 0 || stack.pop() !== matchingOpeningBracket) {
+		  return false;
+		}
+	  }
+	}
+  
+	return stack.length === 0;
+  }
+  
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -145,8 +187,39 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
-}
+	const diff = endDate - startDate;
+	const seconds = Math.floor(diff / 1000);
+	const minutes = Math.floor(seconds / 60);
+	const hours = Math.floor(minutes / 60);
+	const days = Math.floor(hours / 24);
+	const years = Math.floor(days / 365);
+  
+	if (seconds <= 45) {
+	  return "a few seconds ago";
+	} else if (seconds <= 90) {
+	  return "a minute ago";
+	} else if (minutes <= 45) {
+	  return `${minutes} minutes ago`;
+	} else if (minutes <= 90) {
+	  return "an hour ago";
+	} else if (hours <= 22) {
+	  return `${hours} hours ago`;
+	} else if (hours <= 36) {
+	  return "a day ago";
+	} else if (days <= 25) {
+	  return `${days} days ago`;
+	} else if (days <= 45) {
+	  return "a month ago";
+	} else if (days <= 345) {
+	  const months = Math.floor(days / 30);
+	  return `${months} months ago`;
+	} else if (days <= 545) {
+	  return "a year ago";
+	} else {
+	  return `${years} years ago`;
+	}
+  }
+  
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
@@ -169,8 +242,19 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
-}
+	if (num == 0) {
+	  return '0';
+	}
+  
+	let result = '';
+	while (num > 0) {
+	  result = (num % n) + result;
+	  num = Math.floor(num / n);
+	}
+  
+	return result;
+  }
+  
 
 module.exports = {
 	getFizzBuzz,
