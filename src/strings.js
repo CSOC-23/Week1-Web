@@ -11,7 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	let ans=value1+value2;
+	return ans;
 }
 
 /**
@@ -26,7 +27,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +41,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0];
 }
 
 /**
@@ -55,7 +56,13 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	while(value[0]=='\t' || value[0]==' '){
+		value=value.replace(value[0],'');
+	}
+	while(value[value.length-1]=='\t' || value[value.length-1]==' '){
+		value=value.replace(value[value.length-1],'');
+	}
+	return value;
 }
 
 /**
@@ -70,7 +77,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let temp=value;
+    for(let i=0;i<count-1;i++){
+		temp=temp+value;
+	}
+	return temp;
 }
 
 /**
@@ -86,7 +97,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	str=str.replace(value,'');
+	return str;
 }
 
 /**
@@ -100,7 +112,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	str=str.toUpperCase();
+	return str;
 }
 
 /**
@@ -120,7 +133,44 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let cypher='';
+	let newChar,strCode;
+	let newCharCode;
+
+	for(let i=0;i<str.length;i++){
+		strCode=str.charCodeAt(i);
+		if(!(strCode>96 && strCode<123) && !(strCode>64 && strCode<91)){
+			cypher+=str.charAt(i);
+		}else{
+			newCharCode=strCode+13;
+			if(strCode>64 && strCode<91){
+				if(newCharCode>90){
+					newCharCode-=90;
+					newCharCode+=64;
+					newChar=String.fromCharCode(newCharCode);
+					cypher+=newChar;
+				}else{
+                    newChar=String.fromCharCode(newCharCode);
+					cypher+=newChar;
+				}
+			}
+            if(strCode>96 && strCode<123){
+				if(newCharCode>122){
+					newCharCode-=122;
+					newCharCode+=96;
+					newChar=String.fromCharCode(newCharCode);
+					cypher+=newChar;
+				}else{
+					newChar=String.fromCharCode(newCharCode);
+				    cypher+=newChar;
+				}
+				
+			}
+		}
+		
+		}
+	
+	return cypher;
 }
 
 module.exports = {
