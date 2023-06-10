@@ -1,4 +1,4 @@
-/**
+ /**
  * Returns the 'Fizz','Buzz' or an original number using the following rules:
  * 1) return original number
  * 2) but if number multiples of three return 'Fizz'
@@ -19,8 +19,17 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+    if (num % 3 === 0 && num % 5 === 0) {
+        return "FizzBuzz";
+    } else if (num % 3 === 0) {
+        return "Fizz";
+    } else if (num % 5 === 0) {
+        return "Buzz";
+    } else {
+        return num;
+    }
 }
+
 
 /**
  * Returns the factorial of the specified integer n.
@@ -34,7 +43,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+
+    return n * getFactorial(n - 1);
 }
 
 /**
@@ -49,8 +62,24 @@ function getFactorial(n) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
+function sum(n) {
+    if (n >> 0)
+        return n * (n + 1) / 2;
+    else
+        return n * (n - 1) / 2;
+}
+
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+    let s1 = sum(n1);
+    let s2 = sum(n2);
+
+    if (n1 >> 0 && n2 >> 0) {
+        return s2 - s1 + n1;
+    }
+    elseif(n1 << 0 || n2 << 0)
+    return s1 + s2;
+
+
 }
 
 /**
@@ -69,7 +98,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+    return (a + b > c && a + c > b && b + c > a);
 }
 
 /**
@@ -85,7 +114,11 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+    let newstring = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        newstring += str[i];
+    }
+    return newstring;
 }
 
 /**
@@ -110,7 +143,22 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+    const stack = [];
+    const openingBrackets = ['[', '(', '{', '<'];
+    const closingBrackets = [']', ')', '}', '>'];
+
+    for (let char of str) {
+        if (openingBrackets.includes(char)) {
+            stack.push(char);
+        } else if (closingBrackets.includes(char)) {
+            const correspondingOpeningBracket = openingBrackets[closingBrackets.indexOf(char)];
+            if (stack.length === 0 || stack.pop() !== correspondingOpeningBracket) {
+                return false;
+            }
+        }
+    }
+
+    return stack.length === 0;
 }
 
 /**
@@ -145,7 +193,7 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+
 }
 
 /**
@@ -169,16 +217,16 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+
 }
 
 module.exports = {
-	getFizzBuzz,
-	getFactorial,
-	getSumBetweenNumbers,
-	isTriangle,
-	reverseString,
-	isBracketsBalanced,
-	timespanToHumanString,
-	toNaryString,
+    getFizzBuzz,
+    getFactorial,
+    getSumBetweenNumbers,
+    isTriangle,
+    reverseString,
+    isBracketsBalanced,
+    timespanToHumanString,
+    toNaryString,
 };
