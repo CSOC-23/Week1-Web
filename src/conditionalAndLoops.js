@@ -19,7 +19,19 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3===0 && num%5 ===0){
+		return 'FizzBuzz';
+	}
+	else if(num%3 ===0){
+		return 'Fizz';
+
+	}
+	else if(num%5 ===0){
+		return 'Buzz';
+	}
+	else{
+		return num;
+	}
 }
 
 /**
@@ -34,7 +46,14 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	if(n===0 || n===1){
+		return 1;
+	}
+	let fact=1;
+	for(let i=n;i>0;i--){
+		fact=fact*i;
+	}
+	return fact;
 }
 
 /**
@@ -50,7 +69,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum=0;
+	for(let i=n1;i<=n2;i++){
+		sum+=i;
+	}
+	return sum;
 }
 
 /**
@@ -69,7 +92,22 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	let p=0;
+	if(a+b>c){
+		p++;
+	}
+	if(c+b>a){
+		p++;
+	}
+	if(a+c>b){
+		p++;
+	}
+	if(p===3){
+		return true;
+	}
+	if(p!==3){
+		return false;
+	}
 }
 
 /**
@@ -85,7 +123,10 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	var array=str.split('');
+	array.reverse();
+	var reversedstr=array.join('');
+	return reversedstr;
 }
 
 /**
@@ -169,7 +210,17 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	if (num === 0) {
+		return '0';
+	  }
+	
+	  let binary = '';
+	  while (num > 0) {
+		binary = (num % n) + binary;
+		num = Math.floor(num / n);
+	  }
+	
+	  return binary;
 }
 
 module.exports = {

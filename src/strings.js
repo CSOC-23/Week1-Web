@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1+value2;
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0];
 }
 
 /**
@@ -55,7 +55,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	return value.trim();
 }
 
 /**
@@ -70,7 +70,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let str=value;
+	for(let i=1;i<count;i++){
+		value+=str;
+	}
+	return value;
 }
 
 /**
@@ -86,7 +90,23 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+
+	for(let i=0;i<str.length;i++){
+		if(str[i]===value[0]){
+			for(let j=1;j<value.length;j++){
+				if(str[i+j]!==value[j]){
+					break;
+				}
+				if(j===(value.length-1)){
+					var sliced=str.slice(0,i);
+					var sliced2=str.slice(i+value.length,str.length);
+
+					return sliced+sliced2;
+				}
+			}
+		}
+	}
+	return str;
 }
 
 /**
@@ -100,7 +120,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+
+	return str.toUpperCase();
 }
 
 /**
@@ -120,7 +141,24 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	var result = "";
+
+	for (var i = 0; i < str.length; i++) {
+	  var charCode = str.charCodeAt(i);
+  
+	  if (charCode >= 65 && charCode <= 90) {
+		
+		result += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+	  } else if (charCode >= 97 && charCode <= 122) {
+	
+		result += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+	  } else {
+		
+		result += str.charAt(i);
+	  }
+	}
+  
+	return result;
 }
 
 module.exports = {
