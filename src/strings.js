@@ -11,7 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	let result=value1.concat(value2)
+	return result;
 }
 
 /**
@@ -26,7 +27,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +41,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value.charAt(0);
 }
 
 /**
@@ -55,7 +56,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	let r1=value.trim()
+	return r1;
 }
 
 /**
@@ -70,7 +72,13 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let s=value;
+	let s1=value;
+	for(let i=1;i<count;i++)
+	{
+		s1=s1.concat(s);
+	}
+	return s1;
 }
 
 /**
@@ -86,7 +94,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	let r2=str.replace(value,'');
+	return r2;
 }
 
 /**
@@ -100,7 +109,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+      let r3=str.toUpperCase()
+	  return r3;
 }
 
 /**
@@ -120,7 +130,37 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let c;
+  let s1=""
+	for(i=0;i<str.length;i++)
+    {
+      c=str.charAt(i);
+      if(c!=' ')
+      {
+      let ascii=c.charCodeAt(0)
+      if(ascii>=65 && ascii<=90)
+      {
+        ascii=ascii+13;
+        if((ascii>90))
+        {
+          ascii=ascii-26;
+        }
+      }
+      if(ascii>=97 && ascii<=122)
+      {
+        ascii=ascii+13;
+        if((ascii>122))
+        {
+          ascii=ascii-26
+        }
+      }
+      let d=String.fromCharCode(ascii);
+      s1=s1+d;
+      }
+      else
+        s1=s1+' '      
+    }
+  return s1;
 }
 
 module.exports = {
