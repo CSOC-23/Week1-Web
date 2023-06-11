@@ -11,7 +11,14 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
+  for (var i = 0; i < arr.length; i++) {
+    var number = -1;
+    if (arr[i] == value) {
+      number = i;
+      break;
+    }
+  }
+  return number;
 }
 
 /**
@@ -27,7 +34,14 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
+  var arr2 = [];
+  for (var i = 0; i < arr.length; i++) {
+    arr2.push(arr[i]);
+  }
+  for (var i = 0; i < arr.length; i++) {
+    arr2.push(arr[i]);
+  }
+  return arr2;
 }
 
 /**
@@ -42,7 +56,13 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
+  var arr2 = [];
+  for (var j = 0; j < arr.length; j++) {
+    if (arr[j] > 0) {
+      arr2.push(arr[j]);
+    }
+  }
+  return arr2;
 }
 
 /**
@@ -59,7 +79,8 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
+  var arr2 = arr.filter(Boolean);
+  return arr2;
 }
 
 /**
@@ -73,7 +94,12 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
+  var arr2 = [];
+  for (var j = 0; j < arr.length; j++) {
+    var len = arr[j].length;
+    arr2.push(len);
+  }
+  return arr2;
 }
 
 /**
@@ -89,14 +115,17 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+  var sum = 0;
+  for (var j = 0; j < arr.length; j++) {
+    sum += arr[j];
+  }
+  return sum;
 }
-
 module.exports = {
-	findElement,
-	doubleArray,
-	getArrayOfPositives,
-	removeFalsyValues,
-	getStringsLength,
-	getItemsSum,
+  findElement,
+  doubleArray,
+  getArrayOfPositives,
+  removeFalsyValues,
+  getStringsLength,
+  getItemsSum,
 };

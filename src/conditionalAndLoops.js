@@ -19,7 +19,17 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+  var val = "";
+  if (num % 3 == 0 && num % 5 != 0) {
+    val = "Fizz";
+  } else if (num % 5 == 0 && num % 3 != 0) {
+    val = "Buzz";
+  } else if (num % 5 == 0 && num % 3 == 0) {
+    val = "FizzBuzz";
+  } else {
+    val = num;
+  }
+  return val;
 }
 
 /**
@@ -34,7 +44,13 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+  var val = n - 1;
+
+  while (val != 0) {
+    n = n * val;
+    val--;
+  }
+  return n;
 }
 
 /**
@@ -50,7 +66,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+  //   var val=n1;
+  var sum = n1;
+  while (n1 < n2) {
+    n1 += 1;
+    sum += n1;
+  }
+  return sum;
 }
 
 /**
@@ -69,7 +91,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+  return a + b > c && a + c > b && b + c > a;
 }
 
 /**
@@ -85,7 +107,11 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+  var str2 = "";
+  for (var j = str.length - 1; j >= 0; j--) {
+    str2 += str[j];
+  }
+  return str2;
 }
 
 /**
@@ -110,7 +136,29 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+  const stack = [];
+  const openingBrackets = ['[', '(', '{', '<'];
+  const closingBrackets = [']', ')', '}', '>'];
+  const matchingBrackets = {
+    ']': '[',
+    ')': '(',
+    '}': '{',
+    '>': '<'
+  };
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (openingBrackets.includes(char)) {
+      stack.push(char);
+    } else if (closingBrackets.includes(char)) {
+      const lastOpeningBracket = stack.pop();
+      if (matchingBrackets[char] !== lastOpeningBracket) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
 }
 
 /**
@@ -145,7 +193,37 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+  const diffMilliseconds = endDate - startDate;
+  const diffSeconds = Math.floor(diffMilliseconds / 1000);
+  const diffMinutes = Math.floor(diffMilliseconds / (1000 * 60));
+  const diffHours = Math.floor(diffMilliseconds / (1000 * 60 * 60));
+  const diffDays = Math.floor(diffMilliseconds / (1000 * 60 * 60 * 24));
+  const diffMonths = Math.floor(diffMilliseconds / (1000 * 60 * 60 * 24 * 30));
+  const diffYears = Math.floor(diffMilliseconds / (1000 * 60 * 60 * 24 * 365));
+
+  if (diffSeconds <= 45) {
+    return 'a few seconds ago';
+  } else if (diffSeconds <= 90) {
+    return 'a minute ago';
+  } else if (diffMinutes <= 45) {
+    return diffMinutes + ' minutes ago';
+  } else if (diffMinutes <= 90) {
+    return 'an hour ago';
+  } else if (diffHours <= 22) {
+    return diffHours + ' hours ago';
+  } else if (diffHours <= 36) {
+    return 'a day ago';
+  } else if (diffDays <= 25) {
+    return diffDays + ' days ago';
+  } else if (diffDays <= 45) {
+    return 'a month ago';
+  } else if (diffDays <= 345) {
+    return diffMonths + ' months ago';
+  } else if (diffDays <= 545) {
+    return 'a year ago';
+  } else {
+    return diffYears + ' years ago';
+  }
 }
 
 /**
@@ -169,16 +247,28 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+  if (num === 0) {
+    return "0";
+  }
+
+  var result = "";
+
+  while (num > 0) {
+    var remainder = num % n;
+    result = remainder + result;
+    num = Math.floor(num / n);
+  }
+
+  return result;
 }
 
 module.exports = {
-	getFizzBuzz,
-	getFactorial,
-	getSumBetweenNumbers,
-	isTriangle,
-	reverseString,
-	isBracketsBalanced,
-	timespanToHumanString,
-	toNaryString,
+  getFizzBuzz,
+  getFactorial,
+  getSumBetweenNumbers,
+  isTriangle,
+  reverseString,
+  isBracketsBalanced,
+  timespanToHumanString,
+  toNaryString,
 };
