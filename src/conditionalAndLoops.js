@@ -19,7 +19,18 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(n%3==0 && n%5==0){
+		 return 'FizzBuzz';
+	}
+	else if(n%5==0){
+		 return 'Buzz';
+	}
+	else if(n%3==0){
+		return 'Fizz';
+	}
+	else{
+		return num;
+	}
 }
 
 /**
@@ -34,7 +45,10 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	if(n==1){
+		return 1;
+	}
+	return  n*getFactorial(n-1);
 }
 
 /**
@@ -50,7 +64,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum= 0;
+	for(let i= n1;i<= n2; i++){
+		sum =sum + i;
+	}
+	return sum;
 }
 
 /**
@@ -69,7 +87,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	return (a+b>c && b+c>a && c+a>b);
 }
 
 /**
@@ -85,7 +103,11 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let reverseStr="";
+	for(let i=str.length-1 ;i>=0; i++){
+		reverseStr = reverseStr + str.charAt(i);
+	}
+	return reverseStr;
 }
 
 /**
@@ -110,7 +132,21 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let c=0;
+
+	for(let i=0;i<str.length;i++){
+		const char=str[i];
+		if(char === '['||char === '('||char === '{'|| char==='<'){
+			c++;
+		}
+		else if(char === ']'|| char === ')' ||char === '}'|| char === '>'){
+			c--;
+			if(c<0){
+				return false;
+			}
+		}
+	}
+	return c===0;
 }
 
 /**
@@ -145,8 +181,35 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	const timeDiff = endDate - startDate;
+	const seconds = Math.floor(timeDiff/1000);
+	const minutes = Math.floor(timeDiff/(1000*60));
+	const hours = Math.floor(timeDiff/(1000*60*60));
+	const days = Math.floor(timeDiff/(1000*60*60*24));
+	const months = Math.floor(timeDiff/(1000*60*60*24*30));
+	const years = Math.floor(timeDiff/(1000*60*60*24*365));
+
+	const conditions = [
+		[seconds <= 45,`a few seconds ago`],
+		[seconds <= 90,`a minute ago`],
+		[minutes <= 45,`${minutes} minutes ago`],
+		[minutes <= 90,`an hour ago`],
+		[hours <= 22,`${hours} hours ago`],
+		[hours <= 36,`a day ago`],
+		[days <= 25,`${days} days ago`],
+		[days <= 45,`a month ago`],
+		[days <= 345,`${months} months ago`],
+		[days <= 545,`a year ago`],
+		[true,`${years} years ago`],
+	];
+	for(const [condition,result] of conditions ){
+		if(condition){
+			return result;
+		}
+	}
+
 }
+
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
@@ -169,7 +232,16 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	if(num === 0){
+		return '0';
+	}
+	let result="";
+	while(num>0){
+		result = num%n + result;
+		num = Math.floor(num/n)
+	}
+	return result;
+
 }
 
 module.exports = {
