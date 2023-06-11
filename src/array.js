@@ -11,7 +11,9 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
+	let index=arr.indexOf(value);
+	return index;
+
 }
 
 /**
@@ -27,7 +29,16 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
+	
+	let size2=arr.length;
+	const arrayEmpty=new Array();
+	for(let i=0;i<size2;i++)
+	{
+		arrayEmpty[i]=arr[i];
+		arrayEmpty[i+size2]=arr[i];
+	}
+	return arrayEmpty;
+	
 }
 
 /**
@@ -42,7 +53,19 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
+	const resultArray=new Array();
+	let size1=arr.length;
+	let counter=0;
+	for(let i=0;i<size1;i++)
+	{
+		if(arr[i]>0)
+		{
+        resultArray[counter]=arr[i];
+		counter++;
+		
+		}
+	}
+	return resultArray;
 }
 
 /**
@@ -59,7 +82,18 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
+	let size1=arr.length;
+	let counter=0;
+	const resultArray=new Array();
+	for(let i=0;i<size1;i++)
+	{
+		if(!!arr[i]===true)
+		{
+			resultArray[counter]=arr[i];
+			counter++;
+		}
+	}
+	return resultArray;
 }
 
 /**
@@ -73,7 +107,13 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
+	let size1=arr.length;
+	const arrayEmpty =new Array(size1);
+	for(let i=0;i<size1;i++)
+	{
+		arrayEmpty[i]=(arr[i].length);
+	}
+	return arrayEmpty;
 }
 
 /**
@@ -89,8 +129,15 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+	let sum=0;
+	let size=arr.length;
+	for(let i=0;i<size;i++)
+	{
+		sum=sum+arr[i];
+	}
+	return sum;
 }
+
 
 module.exports = {
 	findElement,

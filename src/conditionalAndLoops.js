@@ -19,7 +19,15 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%15==0)
+	return 'FizzBuzz';
+	else if(num%3==0)
+	return 'Fizz';
+	else if(num%5==0)
+	return 'Buzz';
+	else 
+	return num;
+
 }
 
 /**
@@ -34,7 +42,13 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	let product =1;
+	for(let i=1;i<=n;i++)
+	{
+		product=product*i;
+	}
+	return product;
+
 }
 
 /**
@@ -50,7 +64,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum=0;
+	for(let i=n1;i<=n2;i++)
+	{
+     sum=sum+i;
+	}
+	return sum;
 }
 
 /**
@@ -69,8 +88,13 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if((a+b)>c&&(b+c)>a&&(c+a)>b)
+	return true;
+	else 
+	return false;
+
 }
+
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -85,7 +109,12 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	const revArray = [];
+	for(let i=str.length;i>=0;i--)
+	{
+		revArray.push(str[i]);
+	}
+	return  revArray.join('');
 }
 
 /**
@@ -110,8 +139,30 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
-}
+	const stack = [];
+	const openingBrackets = ['[', '(', '{', '<'];
+	const closingBrackets = [']', ')', '}', '>'];
+	const matchingBrackets = {
+	  ']': '[',
+	  ')': '(',
+	  '}': '{',
+	  '>': '<'
+	};
+  
+	for (let i = 0; i < str.length; i++) {
+	  const char = str[i];
+	  if (openingBrackets.includes(char)) {
+		stack.push(char);
+	  } else if (closingBrackets.includes(char)) {
+		const lastOpeningBracket = stack.pop();
+		if (matchingBrackets[char] !== lastOpeningBracket) {
+		  return false;
+		}
+	  }
+	}
+  
+	return stack.length === 0;
+  }
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -169,8 +220,20 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
-}
+	if (num === 0) {
+	  return "0";
+	}
+  
+	var result = "";
+  
+	while (num > 0) {
+	  var remainder = num % n;
+	  result = remainder + result;
+	  num = Math.floor(num / n);
+	}
+  
+	return result;
+  }
 
 module.exports = {
 	getFizzBuzz,
