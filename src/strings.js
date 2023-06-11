@@ -120,12 +120,21 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
-	// var str2= "";
-	// for (let i = 0; i < str.length; i++) {
-	// 	str2.charAt(i)=string.fromCharCode(str.codePointAt(i)+13);
-	// }
-	// return str2;
+		var str2 = '';
+		for (var i = 0; i < str.length; i++) {
+		  	var code = str.charCodeAt(i);
+		  	if (code >= 65 && code <= 90) {
+			str2 += String.fromCharCode(((code - 65 + 13) % 26) + 65);
+		  	} 
+		  	else if (code >= 97 && code <= 122) {
+			str2 += String.fromCharCode(((code - 97 + 13) % 26) + 97);
+		  	} 	
+			else {
+			str2 += str[i];
+		  	}
+		}
+		return str2;
+
 }
 
 module.exports = {

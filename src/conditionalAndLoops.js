@@ -132,15 +132,45 @@ function reverseString(str) {
  *   '()   => true
  *   '[[]' => false
  *   ']['  => false
- *   '[[][][[]]]' => true
+ *   ' [][][[]]]' => true
  *   '[[][]][' => false
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
+
+// function isBracketsBalanced(str) {
+// 	if (str[0] == "}" || str[0] == ")" || str[0] == "]" || str[str.length-1] == "{" || str[str.length-1] == "(" || str[str.length-1] == "[" ) {
+// 		return false;
+// 	}
+// 	else{
+// 		while (str != "") {
+// 			if (str[0] == "{") {
+// 				for (let i = 1; i < str.length; i++) {
+// 					if(str[i] == "}"){
+// 						str.replace("}" , "")
+// 						str.replace("{" , "")
+// 						}
+					
+// 				}
+// 			}
+// 			if (str[0] == "(") {
+// 				str.replace(")" , "")
+// 				str.replace("(" , "")
+// 			}
+// 			if (str[0] == "[") {
+// 				str.replace("]" , "")
+// 				str.replace("[" , "")
+// 			}
+// 		}
+// 	}
+// 		if (str == "") {
+// 			return true;
+// 	}
+// }
+
 function isBracketsBalanced(str) {
 	throw new Error("Not implemented");
 }
-
 /**
  * Returns the human readable string of time period specified by the start and end time.
  * The result string should be constrcuted using the folliwing rules:
