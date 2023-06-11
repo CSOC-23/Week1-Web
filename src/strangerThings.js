@@ -1,5 +1,5 @@
 let ele;
-
+const Message = document.querySelector('#message');
 /*
 A simple function which is used to wait for a particular time (in miliseconds)
 */
@@ -11,7 +11,17 @@ function sleep(ms) {
 TODO:
 This function should return a list of all the distinct characters in UPPERCASE that have been typed in the textbox with the id "message"
 */
-function getCharacters() {}
+function getCharacters() {
+	let mess=[];
+	const msg = (Message.value).toUpperCase().split('');
+	for(let i=0 ; i<msg.length ; i++){
+		if(!mess.includes(msg[i])) mess.push(msg[i]);
+	}
+	mess.filter((e)=>{
+		return e!=" ";
+	})
+	return mess;
+}
 
 /* 
 Sets the CSS properties of the DOM elements to create a nice visual effect
@@ -53,6 +63,9 @@ async function setCSS(character) {
 
 async function illuminateLight(index) {
 	const message = getCharacters();
+	for(let i=0 ; i<message.length ; i++){
+		await setCSS(message[i])
+	}
 
 	/*
     TODO: Call the setCSS function asynchronously for each character present in the message array
