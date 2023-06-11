@@ -51,12 +51,12 @@ async function setCSS(character) {
 		//PINK
 		ele[index].style.backgroundColor = "#FF2D55";
 		colorValue = "rgba(255,105,180)";
-		ele[index].style.boxShadow = "0px 2px 20px 4px red";
+		ele[index].style.boxShadow = "5px 20px 20px 1px red";
 	} else {
 		//BLUE
 		ele[index].style.backgroundColor = "aqua";
 		colorValue = "rgba(0,153,255)";
-		ele[index].style.boxShadow = "0px 2px 20px 4px  aqua";
+		ele[index].style.boxShadow = "5px 20px 20px 1px  aqua";
 	}
 
 	await sleep(1000);
