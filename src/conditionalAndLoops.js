@@ -137,39 +137,45 @@ function reverseString(str) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-let mapping = {
-	']': '[',
-	'}': '{',
-	')': '(',
-	'>': '<'
-}
-let closedBracket = ["]", "}", ")", ">"];
-let openBracket = ["[", "{", "(", "<"];
-
 function isBracketsBalanced(str) {
-	let n = str.length;
-	if (str == "") {
-		return true;
-	}
-	let stack = [];
-	for (let i = 0; i < n; i++) {
-		if (openBracket.includes(str[i])) {
-			stack.push(str[i]);
+	// throw new Error("Not implemented");
+	let stk=[];
+	for(var i=0; i<str.length; i++){
+		x=str[i];
+		if(x=='[' || x=='{' || x=='(' || x=='<'){
+			stk.push(x);
 		}
-		if (closedBracket.includes(str[i])) {
-			if (stack[stack.length - 1] == mapping[str[i]]) {
-				stack = stack.slice(0, stack.length - 1);
-				continue;
+		else if(stk.length==0){
+			return false;
+		}
+		else{
+			if(x==']'){
+				check=stk.pop();
+				if(check!='['){
+					return false;
+				}
 			}
-			else {
-				return false;
+			else if(x=='}'){
+				check=stk.pop();
+				if(check!='{'){
+					return false;
+				}
+			}
+			else if(x==')'){
+				check=stk.pop();
+				if(check!='('){
+					return false;
+				}
+			}
+			else if(x=='>'){
+				check=stk.pop();
+				if(check!='<'){
+					return false;
+				}
 			}
 		}
 	}
-	if (stack.length == 0) {
-		return true;
-	}
-	return false;
+	return (stk.length==0);
 }
 
 /**
