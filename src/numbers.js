@@ -10,8 +10,9 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-	throw new Error("Not implemented");
+	return width*height
 }
+getRectangleArea(5,10)
 
 /**
  * Returns an average of two given numbers.
@@ -26,8 +27,11 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	throw new Error("Not implemented");
+	let r = (value1 + value2) / 2
+  return r ;
 }
+console.log(getAverage(5,5))
+console.log(getAverage(10,0))
 
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
@@ -42,8 +46,9 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-	throw new Error("Not implemented");
+	 return -b/a ;
 }
+console.log(getLinearEquationRoot(5,-10)) ;
 
 /**
  * Returns a last digit of a integer number.
@@ -57,9 +62,13 @@ function getLinearEquationRoot(a, b) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(value) {
-	throw new Error("Not implemented");
+function getLastDigit(value) { 
+  value =Math.abs(value)
+  let l = value % 10
+  return l
 }
+console.log(getLastDigit(37))
+
 
 /**
  * Returns a number by given string representation.
@@ -73,8 +82,9 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-	throw new Error("Not implemented");
+	  return parseFloat(value) ;
 }
+console.log(parseNumberFromString('100'));
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -94,8 +104,19 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
-	throw new Error("Not implemented");
+  if (n <= 1) {
+    return false; 	
+  }
+	for (let i = 2; i * i <= n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
+console.log(isPrime(6))
+console.log(isPrime(2))
+
 
 module.exports = {
 	getRectangleArea,

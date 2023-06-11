@@ -11,8 +11,14 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-	throw new Error("Not implemented");
+		for (let i = 0 ; i < arr.length ; i++ ) {
+    if (arr[i]==value) {
+      return i;
+    }
+  }
+return -1
 }
+console.log(findElement(['Ace', 10, true], 10 ));
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice
@@ -27,8 +33,14 @@ function findElement(arr, value) {
  *    [] => []
  */
 function doubleArray(arr) {
-	throw new Error("Not implemented");
+    let darray = []
+    for (let i = 0 ; i < arr.length ; i++ ) {
+    darray.push(arr[i]);
+    }
+    let a = darray.concat(arr);
+    return a;
 }
+console.log(doubleArray(['Ace', 10, true]));
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -42,8 +54,16 @@ function doubleArray(arr) {
  *    [] => []
  */
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
+  let posarr=[];
+	for (let i=0;i < arr.length ; i++ ) {
+    if (arr[i]>0) {
+      posarr.push(arr[i]);
+    }
+  }
+  return posarr ;
 }
+console.log(getArrayOfPositives([ 0, 1, 2, 3, 4, 5 ]));
+console.log(getArrayOfPositives([-1, 2, -5, -4, 0] ));
 
 /**
  * Removes falsy values from the specified array
@@ -59,8 +79,15 @@ function getArrayOfPositives(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
+	let newarr = [];
+	for (let i=0;i<arr.length ;i++) {
+		if (arr[i]) {
+			newarr.push(arr[i]);
+		}
+	}
+	return newarr ;
 }
+console.log(removeFalsyValues([ 0, false, 'cat', NaN, true, '' ]));
 
 /**
  * Returns the array of string lengths from the specified string array.
@@ -73,8 +100,14 @@ function removeFalsyValues(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
+	let lenarr =[] ;
+	for ( let i=0;i<arr.length;i++) {
+		lenarr.push(arr[i].length) ;
+	}
+	return lenarr ;
 }
+console.log(getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ])) ;
+console.log(getStringsLength([ 'angular', 'react', 'ember' ])) ;
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -89,8 +122,14 @@ function getStringsLength(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
+	let sum = 0;
+	for (let i=0;i<arr.length;i++) {
+		sum+=arr[i];
+	}
+	return sum ;
 }
+console.log(getItemsSum([ 1, 2, 3 ]));
+
 
 module.exports = {
 	findElement,
