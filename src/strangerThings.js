@@ -53,7 +53,10 @@ async function setCSS(character) {
 
 async function illuminateLight(index) {
 	const message = getCharacters();
-
+for(let i=0;i<message.length;i++){
+		 await sleep(100);
+		 setCSS(message[i]);
+ }
 	/*
     TODO: Call the setCSS function asynchronously for each character present in the message array
     */
