@@ -11,7 +11,9 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let result = value1.concat(" ", value2);
+	return result;
 }
 
 /**
@@ -26,7 +28,9 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let l = value.length;
+	return l;
 }
 
 /**
@@ -40,7 +44,9 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let firstChar = value.charAt(0);
+	return firstChar;
 }
 
 /**
@@ -55,7 +61,9 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let result = value.trim();
+	return result;
 }
 
 /**
@@ -70,7 +78,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let result = value.repeat(count);
+	return result;
 }
 
 /**
@@ -86,7 +96,9 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let result = str.replace(value, '');
+	return result;
 }
 
 /**
@@ -100,7 +112,9 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	let result = str.toUpperCase();
+	return result;
 }
 
 /**
@@ -120,7 +134,26 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	// throw new Error("Not implemented");
+	var encodedStr = "";
+  
+  for (var i = 0; i < str.length; i++) {
+    var char = str[i];
+    var code = str.charCodeAt(i);
+   
+    if (/[A-Za-z]/.test(char)) {
+     
+      var baseCode = char >= "a" ? 97 : 65;
+      
+     
+      code = (code - baseCode + 13) % 26 + baseCode;
+    }
+    
+    encodedStr += String.fromCharCode(code);
+  }
+  
+  return encodedStr;
+	
 }
 
 module.exports = {

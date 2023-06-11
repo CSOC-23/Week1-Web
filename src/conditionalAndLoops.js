@@ -19,7 +19,17 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	
+	if (num % 3 == 0 && num % 5 == 0) {
+		return "FizzBuzz";
+	  } else if (num % 3 == 0) {
+		return "Fizz";
+	  } else if (num % 5 == 0) {
+		return "Buzz";
+	  } else {
+		return num;
+	  }
+  
 }
 
 /**
@@ -34,7 +44,13 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	
+	let factorial = 1;
+    for (let i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+    return factorial;
+
 }
 
 /**
@@ -50,7 +66,26 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	
+	if (n1 > n2) {
+		// Swap n1 and n2
+		const temp = n1;
+		n1 = n2;
+		n2 = temp;
+	  }
+	
+	  // Initialize the sum variable
+	  let sum = 0;
+	
+	  // Loop through the numbers from n1 to n2, inclusive
+	  for (let i = n1; i <= n2; i++) {
+		// Add the current number to the sum
+		sum += i;
+	  }
+	
+	  // Return the sum
+	  return sum;
+  
 }
 
 /**
@@ -69,7 +104,19 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	
+	if (a < 0 || b < 0 || c < 0) {
+		return false;
+	  }
+	
+	  // Check if any of the sides are equal to the sum of the other two sides.
+	  if (a + b <= c || a + c <= b || b + c <= a) {
+		return false;
+	  }
+	
+	  // Otherwise, the sides can form a triangle.
+	  return true;
+  
 }
 
 /**
@@ -85,7 +132,13 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	
+	var reversedString = "";
+    for (var i = str.length - 1; i >= 0; i--) {
+      reversedString += str[i];
+    }
+    return reversedString;
+
 }
 
 /**
@@ -110,7 +163,21 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	
+	var stack = [];
+    for (var i = 0; i < str.length; i++) {
+      var char = str[i];
+      if (char in "([{<") {
+        stack.push(char);
+      } else {
+        var openingBracket = stack.pop();
+        if (openingBracket === undefined || openingBracket != char.match(/^\[[({]$/)[0]) {
+          return false;
+        }
+      }
+    }
+    return stack.length === 0;
+
 }
 
 /**
@@ -145,7 +212,65 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	
+	const difference = endDate.getTime() - startDate.getTime();
+  
+    // Convert the difference to seconds.
+    const seconds = Math.round(difference / 1000);
+  
+    // If the difference is less than 45 seconds, return "a few seconds ago".
+    if (seconds < 45) {
+      return "a few seconds ago";
+    }
+  
+    // If the difference is between 45 and 90 seconds, return "a minute ago".
+    if (seconds >= 45 && seconds < 90) {
+      return "a minute ago";
+    }
+  
+    // If the difference is between 90 seconds and 45 minutes, return the number of minutes ago.
+    if (seconds >= 90 && seconds < 21600) {
+      const minutes = Math.floor(seconds / 60);
+      return minutes + " minutes ago";
+    }
+  
+    // If the difference is between 45 minutes and 90 minutes, return "an hour ago".
+    if (seconds >= 21600 && seconds < 54000) {
+      return "an hour ago";
+    }
+	if (seconds >= 54000 && seconds < 792000) {
+		const hours = Math.floor(seconds / 3600);
+		return hours + " hours ago";
+	  }
+	
+	  // If the difference is between 22 hours and 36 hours, return "a day ago".
+	  if (seconds >= 792000 && seconds < 864000) {
+		return "a day ago";
+	  }
+	
+	  // If the difference is between 36 hours and 25 days, return the number of days ago.
+	  if (seconds >= 864000 && seconds < 9120000) {
+		const days = Math.floor(seconds / 86400);
+		return days + " days ago";
+	  }
+	
+	  // If the difference is between 25 days and 45 days, return "a month ago".
+	  if (seconds >= 9120000 && seconds < 12960000) {
+		return "a month ago";
+	  }
+	
+	  // If the difference is between 45 days and 345 days, return the number of months ago.
+	  if (seconds >= 12960000 && seconds < 151200000) {
+		const months = Math.floor(seconds / 2592000);
+		return months + " months ago";
+	  }
+	
+	  // If the difference is between 345 days and 545 days, return "a year ago".
+	  if (seconds >= 151200000 && seconds < 211680000) {
+		return "a year ago";
+	  }
+	  return Math.floor(seconds / 31536000) + " years ago";
+  
 }
 
 /**
@@ -169,7 +294,25 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	
+	if (n <= 1) {
+		throw new Error("n must be greater than 1");
+	  }
+	
+	  // Initialize result string
+	  let result = "";
+	
+	  // Convert num to n-ary representation
+	  while (num > 0) {
+		result = (num % n) + result;
+		num = Math.floor(num / n);
+	  }
+	
+	  // Return result string
+	  return result;
+  
+	  
+
 }
 
 module.exports = {
