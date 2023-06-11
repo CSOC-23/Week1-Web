@@ -19,7 +19,13 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+
+	if(num%3==0 && num%5!=0) return "Fizz";
+	if(num%3!=0 && num%5==0) return "Buzz";
+	if(num%3==0 && num%5==0) return "FizzBuzz";
+
+	else return num;
+	
 }
 
 /**
@@ -34,7 +40,14 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	 
+    
+    if(n == 0 || n == 1){
+        return 1;
+
+    }else{
+        return n * getFactorial(n-1);
+    }
 }
 
 /**
@@ -50,7 +63,7 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	return ((n2-n1)+1) * (n2 + n1) / 2;
 }
 
 /**
@@ -69,7 +82,13 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if (a <= 0 || b <= 0 || c <= 0)
+	return false;
+	
+  if (a+b > c && a+c > b && c+b > a)
+	return true;
+  else
+	return false;
 }
 
 /**
@@ -85,7 +104,11 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let newString = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        newString += str[i];
+    }
+    return newString;
 }
 
 /**
@@ -110,7 +133,52 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let stack = [];
+  
+    
+    for(let i = 0; i < str.length; i++)
+    {
+        let x = str[i];
+  
+        if (x == '(' || x == '[' || x == '{' || x=='<')
+        {
+              
+           
+            stack.push(x);
+            continue;
+        }
+  
+        if (stack.length == 0)
+            return false;
+              
+        let check;
+        switch (x){
+        case ')':
+            check = stack.pop();
+            if (check == '{' || check == '[' || check=='<')
+                return false;
+            break;
+  
+        case '}':
+            check = stack.pop();
+            if (check == '(' || check == '[' || check=='<')
+                return false;
+            break;
+  
+        case ']':
+            check = stack.pop();
+            if (check == '(' || check == '{' || check=='<')
+                return false;
+            break;
+			case '>':
+            check = stack.pop();
+            if (check == '(' || check == '{' || check=='[')
+                return false;
+            break;
+        }
+    }
+  
+    return (stack.length == 0);
 }
 
 /**
@@ -169,7 +237,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	return num.toString(n);
 }
 
 module.exports = {
