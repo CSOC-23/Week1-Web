@@ -19,7 +19,20 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3==0 || num%5==0){
+		if(num%3==0 &&num%5==0){
+			return "FizzBuzz";
+		}
+		else if(num%5==0){
+			return "Buzz";
+		}
+		else{
+			return "Fizz";
+		}
+	}
+	else{
+		return num;
+	}
 }
 
 /**
@@ -34,7 +47,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	let factorial = 1;
+	for (let i=n; i!=0; i--){
+		factorial *= i;
+	}
+	return factorial;
 }
 
 /**
@@ -50,7 +67,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum=0;
+	for(let i=n1; i<=n2; i++ ){
+		sum += i;
+	}
+	return sum;
 }
 
 /**
@@ -69,7 +90,12 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if(a+b>c && b+c>a && c+a>b){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 /**
@@ -85,7 +111,12 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let str_length = str.length;
+	let new_string ="";
+	for(let i=str_length-1; i>=0; i--){
+		new_string=new_string.concat(str[i]);
+	}
+	return new_string;
 }
 
 /**
@@ -110,7 +141,25 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let array=[];
+	for(let i=0; i<str.length; i++){
+		let char = str[i];
+		if(char=="("|| char=="{"|| char=="["|| char=="<"){
+			array.push(char);
+		}
+		else{
+			if(char==")"|| char=="}"|| char=="]"|| char==">"){
+				if(array.length == 0){
+					return false;
+				}
+				let last = array.pop();
+				if((char==")" && last !="(")|| (char=="}" && last !="{")|| (char=="]" && last !="[")|| (char==">" && last !="<")){
+					return false;
+				}
+			}
+		}
+	}
+	return array.length==0;
 }
 
 /**
@@ -145,7 +194,23 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	let start_year = +startDate.setMilliseconds(0, 4);
+	let start_month = +startDate.setMilliseconds(5, 7);
+	let start_day = +startDate.setMilliseconds(8, 10);
+	let start_hout = +startDate.setMilliseconds(11, 13);
+	let start_minute = +startDate.setMilliseconds(14, 16);
+	let start_second = +startDate.setMilliseconds(17, 19);
+	let start_millisecond = +startDate.setMilliseconds(20, 23);
+
+	let end_year = +endDate.setMilliseconds(0, 4);
+	let end_month = +endDate.setMilliseconds(5, 7);
+	let end_day = +endDate.setMilliseconds(8, 10);
+	let end_hout = +endDate.setMilliseconds(11, 13);
+	let end_minute = +endDate.setMilliseconds(14, 16);
+	let end_second = +endDate.setMilliseconds(17, 19);
+	let end_millisecond = +endDate.setMilliseconds(20, 23);
+
+
 }
 
 /**
