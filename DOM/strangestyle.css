@@ -1,0 +1,250 @@
+:root {
+    /* --green: rgb(1, 92, 1); */
+    /* --green: #0f0; */
+    /* --blue: #004553; */
+    /* --blue: #0ff; */
+    /* --pink: rgb(109, 0, 109); */
+    /* --pink: #f0f; */
+    /* --yellow: rgb(109, 109, 0); */
+    /* --yellow: #ff0; */
+}
+
+* {
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.base {
+    position: relative;
+    /* border: 3px dotted red; */
+    min-height: 100px;
+    min-width: 100px;
+}
+
+.glowing-border {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+.glowing-border:focus {
+    outline: none;
+    border-color: #ed9e9e;
+    box-shadow: 0 0 10px #ed9e9e;
+}
+
+.input {
+    display: flex;
+    position: relative;
+    padding: 20px;
+    align-self: center;
+    font-family: monospace;
+
+    /* border-radius: 50%; */
+
+}
+
+@font-face {
+    font-family: maneater;
+    src: url(/assets/maneater-bb/maneaterbb_reg.ttf);
+}
+.input button {
+    font-family: maneater;
+    background-color: rgb(188, 196, 156);
+}
+
+.base img {
+    width: 100%;
+    height: auto;
+    border: 2px solid bisque;
+    border-radius: 0 30px;
+    box-shadow: 0 0 10px 4px rgba(72, 171, 224, 0.5);
+    background-color: brown;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    min-height: 100%;
+    min-width: 100%;
+    filter: blur(4px);
+
+}
+
+.bulb {
+    position: absolute;
+    /* font-size: 0.75em;
+    min-width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%; */
+    width: 2%;
+    height: 5%;
+    border-radius: 50%;
+    opacity: 60%;
+
+}
+
+.index-1 {
+    top: 21%;
+    left: 14%;
+    background-color: var(--green);
+}
+
+.index-2 {
+    top: 18.5%;
+    left: 21.5%;
+    background-color: var(--blue);
+}
+
+.index-3 {
+    top: 17.5%;
+    left: 26%;
+    background-color: var(--pink);
+
+}
+
+.index-4 {
+    top: 17%;
+    left: 38.5%;
+    background-color: var(--green);
+}
+
+.index-5 {
+    top: 17%;
+    left: 45.5%;
+    background-color: var(--blue);
+}
+
+.index-6 {
+    top: 16%;
+    left: 59%;
+    background-color: var(--yellow);
+}
+
+.index-7 {
+    top: 12.5%;
+    left: 66.5%;
+    background-color: var(--pink);
+}
+
+.index-8 {
+    top: 9%;
+    left: 76.5%;
+    background-color: var(--blue);
+}
+
+.index-9 {
+    top: 43%;
+    left: 3.5%;
+    background-color: var(--green);
+}
+
+.index-10 {
+    top: 48%;
+    left: 15%;
+    background-color: var(--pink);
+}
+
+.index-11 {
+    top: 47.5%;
+    left: 21%;
+    background-color: var(--blue);
+}
+
+.index-12 {
+    top: 47.5%;
+    left: 30.5%;
+    background-color: var(--yellow);
+}
+
+.index-13 {
+    top: 46.5%;
+    left: 39%;
+    background-color: var(--yellow);
+}
+
+.index-14 {
+    top: 41%;
+    left: 47%;
+    background-color: var(--pink);
+}
+
+.index-15 {
+    top: 35.5%;
+    background-color: var(--pink);
+    left: 57%;
+}
+
+.index-16 {
+    top: 35.5%;
+    left: 65.5%;
+    background-color: var(--blue);
+}
+
+.index-17 {
+    top: 34%;
+    left: 86%;
+    background-color: var(--pink);
+}
+
+.index-18 {
+    top: 69.5%;
+    left: 9%;
+    background-color: var(--yellow);
+}
+
+.index-19 {
+    top: 72.5%;
+    left: 17%;
+    background-color: var(--green);
+}
+
+.index-20 {
+    top: 75%;
+    left: 23.5%;
+    background-color: var(--yellow);
+}
+
+.index-21 {
+    top: 75%;
+    left: 32.5%;
+    background-color: var(--blue);
+}
+
+.index-22 {
+    top: 74%;
+    left: 41.5%;
+    background-color: var(--pink);
+}
+
+.index-23 {
+    top: 71%;
+    left: 50.5%;
+    background-color: var(--blue);
+}
+
+.index-24 {
+    top: 67.5%;
+    left: 57.5%;
+    background-color: var(--yellow);
+}
+
+.index-25 {
+    top: 67.5%;
+    left: 69%;
+    background-color: var(--pink);
+}
+
+.index-26 {
+    top: 66%;
+    left: 84%;
+    background-color: var(--pink);
+}
