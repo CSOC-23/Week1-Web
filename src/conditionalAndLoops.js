@@ -19,7 +19,22 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3===0 && num%5===0)
+	{
+		let s = "FizzBuzz";
+		return s;
+	}
+	else if(num%3===0)
+	{
+		let s = "Fizz";
+		return s;
+	}
+	else if(num%5===0)
+	{
+		let s = "Buzz";
+		return s;
+	}
+	else return num;
 }
 
 /**
@@ -34,7 +49,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	let num=1;
+	for(let i=1;i<=n;++i)
+	{
+		num = num*i;
+	}
+	return num;
 }
 
 /**
@@ -50,7 +70,14 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let x = Math.min(n1,n2);
+	let y = Math.max(n1,n2);
+	let sum=0;
+	for(let i=x;i<=y;++i)
+	sum+=i;
+
+	return sum;
+	
 }
 
 /**
@@ -69,7 +96,8 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if(a+b>c && a+c>b && b+c>a)return true;
+	else return false;
 }
 
 /**
@@ -85,7 +113,7 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	return str.split('').reverse().join('');
 }
 
 /**
@@ -110,7 +138,56 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	// let stack = [];
+ 
+    // // Traversing the Expression
+    // for(let i = 0; i < expr.length; i++)
+    // {
+    //     let x = expr[i];
+ 
+    //     if (x == '(' || x == '[' || x == '{' || x=='<')
+    //     {
+             
+    //         // Push the element in the stack
+    //         stack.push(x);
+    //         continue;
+    //     }
+ 
+    //     // If current character is not opening
+    //     // bracket, then it must be closing.
+    //     // So stack cannot be empty at this point.
+    //     if (stack.length == 0)
+    //         return false;
+             
+    //     let check;
+    //     switch (x){
+    //     case ')':
+    //         check = stack.pop();
+    //         if (check == '{' || check == '[' || check=='<')
+    //             return false;
+    //         break;
+ 
+    //     case '}':
+    //         check = stack.pop();
+    //         if (check == '(' || check == '[' || check=='<')
+    //             return false;
+    //         break;
+ 
+    //     case ']':
+    //         check = stack.pop();
+    //         if (check == '(' || check == '{' ||  check=='<')
+    //             return false;
+    //         break;
+
+	// 	case '>':
+	// 		check = stack.pop();
+	// 		if (check == '(' || check == '{' ||  check=='[')
+	// 		return false;
+	// 		break;
+    //     }
+    // }
+ 
+    // return (stack.length == 0);
 }
 
 /**
@@ -169,7 +246,18 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	let s="";
+	while(num>=1)
+	{
+		let a = num%n;
+		let t = String(a);
+		
+		s = s+t;
+		num = Math.floor(num/n);
+	}
+
+	return s.split('').reverse().join('');
+	
 }
 
 module.exports = {
