@@ -5,7 +5,9 @@ const BULB_OFF_URL = "https://i.postimg.cc/KjK1wL3c/bulb-off.png";
 TODO:
 Fetch the status of the 'flexSwitchCheckChecked' checkbox and call the appropiate function to turn the bulb on or off
 */
-function lightSwitch() {}
+function lightSwitch() {
+    
+}
 
 /*
 TODO:
