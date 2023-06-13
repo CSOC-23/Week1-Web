@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1 + value2;
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0];
 }
 
 /**
@@ -55,7 +55,11 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	let a = "";
+	for(let i =0;i<value.length;i++)
+	{
+		return value.trim();
+	}
 }
 
 /**
@@ -70,7 +74,12 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let str = "";
+for(let i =0;i<count;i++)
+{
+	str = str + value;
+}
+return str;
 }
 
 /**
@@ -86,7 +95,11 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	let a = value.length;
+	let c = str.length;
+	let b = str.indexOf(value);
+	return str.slice(0,b) + str.slice(b+a,c);
+	
 }
 
 /**
@@ -100,7 +113,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return str.toUpperCase();
 }
 
 /**
@@ -120,7 +133,15 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	const input = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?!#$/|';
+    const output = ' NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm?!#$/|';
+    let encoded = '';
+    for (let i=0; i < str.length; i++) {
+
+        const index = input.indexOf(str[i]);
+        encoded += output[index];
+    }
+    return encoded;
 }
 
 module.exports = {
