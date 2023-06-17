@@ -11,7 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	const result = value1.concat("", value2);
+	return result;
 }
 
 /**
@@ -26,7 +27,8 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	const length = value.length;
+	return length;
 }
 
 /**
@@ -40,7 +42,8 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	const firstChar = value[0];
+	return firstChar;
 }
 
 /**
@@ -55,7 +58,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	const trimmedStr = value.trim();
+	return trimmedStr;
 }
 
 /**
@@ -70,7 +74,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	const repeatedStr = value.repeat(count);
+	return repeatedStr;
+	
 }
 
 /**
@@ -86,7 +92,8 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	const updatedStr = str.replace(value, "");
+	return updatedStr;
 }
 
 /**
@@ -100,7 +107,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	const uppercaseStr = str.toUpperCase();
+	return uppercaseStr;
 }
 
 /**
@@ -120,7 +128,23 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let encodedStr = "";
+
+  for (let i = 0; i < str.length; i++) {
+    let charCode = str.charCodeAt(i);
+
+    if (charCode >= 65 && charCode <= 90) {
+      // Uppercase letters
+      charCode = ((charCode - 65 + 13) % 26) + 65;
+    } else if (charCode >= 97 && charCode <= 122) {
+      // Lowercase letters
+      charCode = ((charCode - 97 + 13) % 26) + 97;
+    }
+
+    encodedStr += String.fromCharCode(charCode);
+  }
+
+  return encodedStr;
 }
 
 module.exports = {

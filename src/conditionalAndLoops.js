@@ -19,7 +19,15 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if (num % 3 === 0 && num % 5 === 0) {
+		return "FizzBuzz";
+	  } else if (num % 3 === 0) {
+		return "Fizz";
+	  } else if (num % 5 === 0) {
+		return "Buzz";
+	  } else {
+		return num;
+	  }
 }
 
 /**
@@ -34,8 +42,13 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
-}
+	if (n === 0 || n === 1) {
+		return 1;
+	  }
+	
+	  // Recursive case: multiply n with factorial of (n - 1)
+	  return n *getFactorial(n - 1);
+	}
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -50,7 +63,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+		let sum = 0;
+		for (let i = n1; i <= n2; i++) {
+		  sum += i;
+		}
+	  
+		return sum;
 }
 
 /**
@@ -69,7 +87,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if (a + b > c && b + c > a && c + a > b) {
+		return true;
+	  } else {
+		return false;
+	  }
 }
 
 /**
@@ -85,7 +107,8 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	const reversed = str.split("").reverse().join("");
+  return reversed;
 }
 
 /**
@@ -110,11 +133,34 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+		const stack = [];
+		const openingBrackets = ['[', '(', '{', '<'];
+		const closingBrackets = [']', ')', '}', '>'];
+		const bracketPairs = {
+		  ']': '[',
+		  ')': '(',
+		  '}': '{',
+		  '>': '<',
+		};
+	  
+		for (let i = 0; i < str.length; i++) {
+		  const char = str[i];
+	  
+		  if (openingBrackets.includes(char)) {
+			stack.push(char);
+		  } else if (closingBrackets.includes(char)) {
+			const lastOpeningBracket = stack.pop();
+			if (bracketPairs[char] !== lastOpeningBracket) {
+			  return false; // Mismatched closing bracket
+			}
+		  }
+		}
+	  
+		return stack.length === 0; // Check if there are any unclosed brackets
 }
 
 /**
- * Returns the human readable string of time period specified by the start and end time.
+ Returns the human readable string of time period specified by the start and end time.
  * The result string should be constrcuted using the folliwing rules:
  *
  * ---------------------------------------------------------------------
@@ -124,7 +170,7 @@ function isBracketsBalanced(str) {
  *   45 to 90 seconds           |  a minute ago
  *   90 seconds to 45 minutes   |  2 minutes ago ... 45 minutes ago
  *   45 to 90 minutes           |  an hour ago
- *  90 minutes to 22 hours      |  2 hours ago ... 22 hours ago
+ *  90 minutes to 22 hours      |  2 hours ago ... 2* 2 hours ago
  *  22 to 36 hours              |  a day ago
  *  36 hours to 25 days         |  2 days ago ... 25 days ago
  *  25 to 45 days               |  a month ago
@@ -145,8 +191,98 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+		// const diff = endDate - startDate;
+		// const seconds = Math.floor(diff / 1000);
+		// const minutes = Math.floor(diff / 60000);
+		// const hours = Math.floor(diff / 3600000);
+		// const days = Math.floor(diff / 86400000);
+		// const months = Math.floor(diff / 2592000000);
+		// const years = Math.floor(diff / 31536000000);
+	  
+		// if (seconds <=45) {
+		//   return 'a few seconds ago';
+		// } else if (seconds <= 90) {
+		//   return 'a minute ago';
+		// } else if (minutes <=45) {
+		//   return `${minutes} minutes ago`;
+		// } else if (minutes < 90) {
+		//   return 'an hour ago';
+		// } else if (hours < 22) {
+		//   return `${hours} hours ago`;
+		// } else if (hours < 36) {
+		//   return 'a day ago';
+		// } else if (days < 25) {
+		//   return `${days} days ago`;
+		// } else if (days < 45) {
+		//   return 'a month ago';
+		// } else if (days < 345) {
+		//   return `${months} months ago`;
+		// } else if (days < 545) {
+		//   return 'a year ago';
+		// } else {
+		//   return `${years} years ago`;
+		// }
+		let diff = endDate.valueOf() - startDate.valueOf();
+	let secDiff = diff/1000;
+	let minDiff = secDiff/60;
+	let hourDiff = minDiff/60;
+	let dayDiff = hourDiff/24;
+
+	if(secDiff<=45){
+		return "a few seconds ago";
+	}
+	else if(secDiff>45 && secDiff<=90){
+		return "a minute ago";
+	}
+	else if(minDiff <= 45){
+		if(secDiff <=120) return '2 minutes ago';
+		else return `${Math.floor(minDiff)} minutes ago`;
+	}
+	else if(minDiff <= 90){
+		return "an hour ago";
+	}
+	else if(hourDiff<=22){
+		if(minDiff <=120) return '2 hours ago';
+		else{
+			if(hourDiff-Math.floor(hourDiff) <=0.5) return `${Math.floor(hourDiff)} hours ago`;
+			else return `${Math.ceil(hourDiff)} hours ago`;
+		}
+	}
+	else if(hourDiff<=36){
+		return "a day ago";
+	}
+	else if(dayDiff<=25){
+		if(hourDiff <=48) return '2 days ago';
+		else{
+			if(dayDiff-Math.floor(dayDiff) <=0.5) return `${Math.floor(dayDiff)} days ago`;
+			else return `${Math.ceil(dayDiff)} days ago`;
+		}
+	}
+	else if(dayDiff<=45){
+		return "a month ago";
+	}
+	else if(dayDiff<345){
+		if(dayDiff <=60) return '2 months ago';
+		else{
+			if((dayDiff/30)-Math.floor(dayDiff/30) <=0.5) return `${Math.floor(dayDiff/30)} months ago`;
+			else return `${Math.ceil(dayDiff/30)} months ago`;
+		}
+	}
+	else if(dayDiff<=545){
+		return "a year ago";
+	}
+	else{
+		if(dayDiff <=727) return '2 years ago';
+		else{
+			if(Math.floor(dayDiff/(12*30)) <=20){
+				if((dayDiff/(12*30))-Math.floor(dayDiff/(12*30)) <=0.5) return `${Math.floor(dayDiff/(12*30))} years ago`;
+				else return `${Math.ceil(dayDiff/30)} months ago`;
+			}
+			else return '20 years ago';
+		}
+	}
 }
+
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
@@ -169,7 +305,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+		return num.toString(n);
 }
 
 module.exports = {
