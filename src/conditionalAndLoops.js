@@ -170,7 +170,7 @@ function isBracketsBalanced(str) {
  *   45 to 90 seconds           |  a minute ago
  *   90 seconds to 45 minutes   |  2 minutes ago ... 45 minutes ago
  *   45 to 90 minutes           |  an hour ago
- *  90 minutes to 22 hours      |  2 hours ago ... 2* 2 hours ago
+ *  90 minutes to 22 hours      |  2 hours ago ... 22 hours ago
  *  22 to 36 hours              |  a day ago
  *  36 hours to 25 days         |  2 days ago ... 25 days ago
  *  25 to 45 days               |  a month ago
@@ -191,37 +191,6 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-		// const diff = endDate - startDate;
-		// const seconds = Math.floor(diff / 1000);
-		// const minutes = Math.floor(diff / 60000);
-		// const hours = Math.floor(diff / 3600000);
-		// const days = Math.floor(diff / 86400000);
-		// const months = Math.floor(diff / 2592000000);
-		// const years = Math.floor(diff / 31536000000);
-	  
-		// if (seconds <=45) {
-		//   return 'a few seconds ago';
-		// } else if (seconds <= 90) {
-		//   return 'a minute ago';
-		// } else if (minutes <=45) {
-		//   return `${minutes} minutes ago`;
-		// } else if (minutes < 90) {
-		//   return 'an hour ago';
-		// } else if (hours < 22) {
-		//   return `${hours} hours ago`;
-		// } else if (hours < 36) {
-		//   return 'a day ago';
-		// } else if (days < 25) {
-		//   return `${days} days ago`;
-		// } else if (days < 45) {
-		//   return 'a month ago';
-		// } else if (days < 345) {
-		//   return `${months} months ago`;
-		// } else if (days < 545) {
-		//   return 'a year ago';
-		// } else {
-		//   return `${years} years ago`;
-		// }
 		let diff = endDate.valueOf() - startDate.valueOf();
 	let secDiff = diff/1000;
 	let minDiff = secDiff/60;
