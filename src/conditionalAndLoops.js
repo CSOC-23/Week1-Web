@@ -32,7 +32,7 @@ function getFizzBuzz(num) {
     return num
   }	
 }
-getFizzBuzz(15);
+
 
 /**
  * Returns the factorial of the specified integer n.
@@ -57,9 +57,7 @@ function getFactorial(n) {
 
   return result;
 }
-console.log(getFactorial(0))
-console.log(getFactorial(1))
-console.log(getFactorial(5))
+
 
 
 
@@ -82,7 +80,7 @@ function getSumBetweenNumbers(n1, n2) {
 	}
     return result;  
 }
-console.log(getSumBetweenNumbers(5,10))
+
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false
  * in any other ways.
@@ -105,8 +103,7 @@ function isTriangle(a, b, c) {
   return false;
   }
 
-console.log(isTriangle(3, 4, 5));
-console.log(isTriangle(1, 2, 4)); 
+
 
 
 /**
@@ -129,8 +126,7 @@ function reverseString(str) {
   }
   return revstr;
 }
-console.log(reverseString("abracadabra")); 
-console.log(reverseString("rotator")); 
+ 
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
@@ -179,7 +175,7 @@ function isBracketsBalanced(str) {
   return list.length === 0;
 }
 
-console.log(isBracketsBalanced('{[(<{[]}>)]}'))
+
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -292,7 +288,7 @@ function toNaryString(num, n) {
   }
   return toNary;
 }
-console.log(toNaryString(1024, 2)) ; 
+
 
 module.exports = {
 	getFizzBuzz,
