@@ -18,7 +18,7 @@ function findElement(arr, value) {
   }
 return -1
 }
-console.log(findElement(['Ace', 10, true], 10 ));
+
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice
@@ -40,7 +40,7 @@ function doubleArray(arr) {
     let a = darray.concat(arr);
     return a;
 }
-console.log(doubleArray(['Ace', 10, true]));
+
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -62,8 +62,6 @@ function getArrayOfPositives(arr) {
   }
   return posarr ;
 }
-console.log(getArrayOfPositives([ 0, 1, 2, 3, 4, 5 ]));
-console.log(getArrayOfPositives([-1, 2, -5, -4, 0] ));
 
 /**
  * Removes falsy values from the specified array
@@ -87,7 +85,7 @@ function removeFalsyValues(arr) {
 	}
 	return newarr ;
 }
-console.log(removeFalsyValues([ 0, false, 'cat', NaN, true, '' ]));
+
 
 /**
  * Returns the array of string lengths from the specified string array.
@@ -106,8 +104,7 @@ function getStringsLength(arr) {
 	}
 	return lenarr ;
 }
-console.log(getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ])) ;
-console.log(getStringsLength([ 'angular', 'react', 'ember' ])) ;
+
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -128,7 +125,7 @@ function getItemsSum(arr) {
 	}
 	return sum ;
 }
-console.log(getItemsSum([ 1, 2, 3 ]));
+
 
 
 module.exports = {
