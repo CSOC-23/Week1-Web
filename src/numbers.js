@@ -12,7 +12,6 @@
 function getRectangleArea(width, height) {
 	return width*height
 }
-getRectangleArea(5,10)
 
 /**
  * Returns an average of two given numbers.
@@ -30,8 +29,6 @@ function getAverage(value1, value2) {
 	let r = (value1 + value2) / 2
   return r ;
 }
-console.log(getAverage(5,5))
-console.log(getAverage(10,0))
 
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
@@ -48,7 +45,6 @@ console.log(getAverage(10,0))
 function getLinearEquationRoot(a, b) {
 	 return -b/a ;
 }
-console.log(getLinearEquationRoot(5,-10)) ;
 
 /**
  * Returns a last digit of a integer number.
@@ -67,7 +63,7 @@ function getLastDigit(value) {
   let l = value % 10
   return l
 }
-console.log(getLastDigit(37))
+
 
 
 /**
@@ -84,7 +80,7 @@ console.log(getLastDigit(37))
 function parseNumberFromString(value) {
 	  return parseFloat(value) ;
 }
-console.log(parseNumberFromString('100'));
+
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -114,8 +110,7 @@ function isPrime(n) {
   }
   return true;
 }
-console.log(isPrime(6))
-console.log(isPrime(2))
+
 
 
 module.exports = {
