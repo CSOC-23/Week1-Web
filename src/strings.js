@@ -13,7 +13,7 @@
 function concatenateStrings(value1, value2) {
 	return value1+value2 ;
 }
-console.log(concatenateStrings('ab','bb'));
+
 
 /**
  * Returns the length of given string.
@@ -29,7 +29,7 @@ console.log(concatenateStrings('ab','bb'));
 function getStringLength(value) {
 	return value.length ;
 }
-console.log(getStringLength('aaaaa'));
+
 
 
 /**
@@ -45,7 +45,7 @@ console.log(getStringLength('aaaaa'));
 function getFirstChar(value) {
 	return value[0] ;
 }
-console.log(getFirstChar('John Doe')) ;
+
 
 /**
  * Removes a leading and trailing whitespace characters from string.
@@ -62,8 +62,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
 	return value.trim() ;
 }
 
-console.log(removeLeadingAndTrailingWhitespaces('  Abracadabra'));
-console.log(removeLeadingAndTrailingWhitespaces('\tHello, World! '));
+
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -84,7 +83,7 @@ function repeatString(value, count) {
 	return a ;
 }
 
-console.log(repeatString('A', 5)) ;
+
 /**
  * Remove the first occurrence of string inside another string
  *
@@ -104,7 +103,7 @@ function removeFirstOccurrences(str, value) {
   }
   return str;
 }
-console.log(removeFirstOccurrences('To be or not to be', 'not')) ;
+
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -119,7 +118,7 @@ console.log(removeFirstOccurrences('To be or not to be', 'not')) ;
 function convertToUpperCase(str) {
 	return str.toUpperCase() ;
 }
-console.log(convertToUpperCase('Thunderstruck')) ;
+
 
 /**
  * Encode specified string with ROT13 cipher
