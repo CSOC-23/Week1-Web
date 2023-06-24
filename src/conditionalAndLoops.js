@@ -208,7 +208,9 @@ function isBracketsBalanced(str) {
  *   Date('2000-01-01 01:00:00.100'), Date('2015-01-02 03:00:05.000')  => '15 years ago'
  *
  */
-
+function timespanToHumanString(startDate, endDate) {
+	throw new Error("Not implemented");
+}
 // function timespanToHumanString(startDate, endDate) {
 //   const start = new Date(startDate);
 //   const end = new Date(endDate);
