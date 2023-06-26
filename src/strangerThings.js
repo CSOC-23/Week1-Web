@@ -11,7 +11,16 @@ function sleep(ms) {
 TODO:
 This function should return a list of all the distinct characters in UPPERCASE that have been typed in the textbox with the id "message"
 */
-function getCharacters() {}
+function getCharacters() {
+	let str = document.getElementById("message").value;
+	let arr = [];
+	for (let i = 0; i < str.length; i++) {
+		if (arr.indexOf(str[i]) == -1) {
+			arr.push(str[i]);
+		}
+	}
+	return arr;
+}
 
 /* 
 Sets the CSS properties of the DOM elements to create a nice visual effect
@@ -57,4 +66,9 @@ async function illuminateLight(index) {
 	/*
     TODO: Call the setCSS function asynchronously for each character present in the message array
     */
+
+	for (let i = 0; i < message.length; i++) {
+		await setCSS(message[i]);
+	}
+
 }

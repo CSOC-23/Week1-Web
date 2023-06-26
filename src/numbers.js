@@ -10,7 +10,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-	throw new Error("Not implemented");
+	return width*height;
 }
 
 /**
@@ -26,7 +26,13 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	throw new Error("Not implemented");
+	let average = (value1 + value2) / 2;
+  
+	if (average === Infinity) {
+	  return Number.MAX_VALUE;
+	}
+	
+	return average;
 }
 
 /**
@@ -42,7 +48,12 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-	throw new Error("Not implemented");
+	let x = -b/a;
+	if (x === 0) {
+		return 0;
+	  } else {
+		return x;
+	  }
 }
 
 /**
@@ -58,7 +69,8 @@ function getLinearEquationRoot(a, b) {
  *     0     => 0
  */
 function getLastDigit(value) {
-	throw new Error("Not implemented");
+	let a = value%10;
+	return Math.abs(a);
 }
 
 /**
@@ -73,7 +85,8 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-	throw new Error("Not implemented");
+	let a = Number(value);
+	return a;
 }
 
 /**
@@ -94,7 +107,20 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
-	throw new Error("Not implemented");
+	let a = true;
+	if(n==1){
+		return false;
+	}
+	if(n==2){
+		return true;
+	}
+	for(let i=2;i<n;i++){
+		if(n%i==0){
+			a = false;
+			break;
+		}
+	}
+	return a;
 }
 
 module.exports = {
