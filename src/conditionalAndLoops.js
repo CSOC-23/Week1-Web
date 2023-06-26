@@ -19,9 +19,11 @@
  *
  */
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
+	if(num%3==0 && num%5 == 0 ) return "FizzBuzz";
+	else if( num%3 ==0 ) return "Fizz";
+	else if (num%5 == 0) return "Buzz";
+	else return num; 
 }
-
 /**
  * Returns the factorial of the specified integer n.
  *
@@ -34,9 +36,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-	throw new Error("Not implemented");
+	ans =1;
+	while (n--){
+		ans = ans*(n+1);
+	}
+	return ans;
 }
-
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
  *
@@ -50,9 +55,17 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
+	let sum =0;
+	if(n1>n2){
+		let temp =n2;
+		n2=n1;
+		n1=temp;
+	}
+	for (let i=n1;i<=n2;i++){
+		sum+=i;
+	}
+	return sum;
 }
-
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false
  * in any other ways.
@@ -69,9 +82,9 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
+	if(a+b>c && b+c>a && c+a>b) return true;
+	else return false;
 }
-
 /**
  * Reverse the specified string (put all chars in reverse order)
  *
@@ -85,9 +98,10 @@ function isTriangle(a, b, c) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-	throw new Error("Not implemented");
+	let str2 ="";
+	for (i in str) str2= str[i]+str2;
+	return str2;
 }
-
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
  * Balanced means that is, whether it consists entirely of pairs of opening/closing brackets
@@ -110,9 +124,22 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	let currentStack = [];
+	let obj = {
+		"]":"[" ,
+		"}": "{",
+		">":"<",
+		")": "("
+		}
+	for(i in str){
+		if(str[i] =='}' || str[i] ==']' || str[i] == '>' || str[i] == ')'){
+			if(currentStack.length == 0 || currentStack[currentStack.length-1]!= obj[str[i]] ) return false;
+			else currentStack.pop();
+		} else currentStack.push(str[i]);
+	}
+	if(currentStack.length == 0) return true;
+	else return false;
 }
-
 /**
  * Returns the human readable string of time period specified by the start and end time.
  * The result string should be constrcuted using the folliwing rules:
@@ -145,9 +172,68 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
-}
+	let diff = endDate.valueOf() - startDate.valueOf();
+	let secDiff = diff/1000;
+	let minDiff = secDiff/60;
+	let hourDiff = minDiff/60;
+	let dayDiff = hourDiff/24;
 
+	if(secDiff<=45){
+		return "a few seconds ago";
+	}
+	else if(secDiff>45 && secDiff<=90){
+		return "a minute ago";
+	}
+	else if(minDiff <= 45){
+		if(secDiff <=120) return '2 minutes ago';
+		else return `${Math.floor(minDiff)} minutes ago`;
+	}
+	else if(minDiff <= 90){
+		return "an hour ago";
+	}
+	else if(hourDiff<=22){
+		if(minDiff <=120) return '2 hours ago';
+		else{
+			if(hourDiff-Math.floor(hourDiff) <=0.5) return `${Math.floor(hourDiff)} hours ago`;
+			else return `${Math.ceil(hourDiff)} hours ago`;
+		}
+	}
+	else if(hourDiff<=36){
+		return "a day ago";
+	}
+	else if(dayDiff<=25){
+		if(hourDiff <=48) return '2 days ago';
+		else{
+			if(dayDiff-Math.floor(dayDiff) <=0.5) return `${Math.floor(dayDiff)} days ago`;
+			else return `${Math.ceil(dayDiff)} days ago`;
+		}
+	}
+	else if(dayDiff<=45){
+		return "a month ago";
+	}
+	else if(dayDiff<345){
+		if(dayDiff <=60) return '2 months ago';
+		else{
+			if((dayDiff/30)-Math.floor(dayDiff/30) <=0.5) return `${Math.floor(dayDiff/30)} months ago`;
+			else return `${Math.ceil(dayDiff/30)} months ago`;
+		}
+	}
+	else if(dayDiff<=545){
+		return "a year ago";
+	}
+	else{
+		if(dayDiff <=727) return '2 years ago';
+		else{
+			if(Math.floor(dayDiff/(12*30)) <=20){
+				if((dayDiff/(12*30))-Math.floor(dayDiff/(12*30)) <=0.5) return `${Math.floor(dayDiff/(12*30))} years ago`;
+				else return `${Math.ceil(dayDiff/30)} months ago`;
+			}
+			else return '20 years ago';
+		}
+	}
+	
+}
+// console.log(timespanToHumanString('2000-01-01 01:00:00.100','2000-01-01 01:00:00.200'))
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
  * specified number.
@@ -169,9 +255,14 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	let ans ='';
+	while(n<=num){
+		ans= num%n+ans;
+		num = ~~(num/n);
+	}
+	ans = num +ans;
+	return ans;
 }
-
 module.exports = {
 	getFizzBuzz,
 	getFactorial,
