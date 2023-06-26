@@ -158,38 +158,54 @@ function isBracketsBalanced(str) {
  
         if (x == '(' || x == '[' || x == '{')
         {
-             
-           
             stack.push(x);
-            continue;
         }
- 
+		else if (x==')'){
+			if(stack.size==0){
+				return false;
+			}
+			else if(stack.peek!='('){
+				return false;
+			}
+			else{
+				stack.pop;
+				return true;
+			}
+		}
+		else if (x==']'){
+			if(stack.size==0){
+				return false;
+			}
+			else if(stack.peek!='['){
+				return false;
+			}
+			else{
+				stack.pop;
+				return true;
+			}
+		}
+		else if (x=='}'){
+			if(stack.size==0){
+				return false;
+			}
+			else if(stack.peek!='{'){
+				return false;
+			}
+			else{
+				stack.pop;
+				return true;
+			}
+		}
+	}
         
-        if (stack.length == 0)
-            return false;
-             
-        let check;
-        switch (x){
-        case ')':
-            check = stack.pop();
-            if (check == '{' || check == '[')
-                return false;
-            break;
- 
-        case '}':
-            check = stack.pop();
-            if (check == '(' || check == '[')
-                return false;
-            break;
- 
-        case ']':
-            check = stack.pop();
-            if (check == '(' || check == '{')
-                return false;
-            break;
-        }
-    }
-    return true;
+        if(stack.size==0){
+			return true;
+		}
+		else{
+			return false;
+		}
+    
+
 }
 	
   
@@ -268,7 +284,8 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	let res=num.toString(n);
+	return res;
 }
 
 module.exports = {
