@@ -205,7 +205,6 @@ function isBracketsBalanced(str) {
 			return false;
 		}
     
-
 }
 	
   
