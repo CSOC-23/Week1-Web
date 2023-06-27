@@ -1,7 +1,9 @@
+const Big = require('big.js');
+
 /**
  * Returns an area of a rectangle given by width and heigth.
  *
- * @param {numder} width
+ * @param {number} width
  * @param {number} height
  * @return {number}
  *
@@ -10,13 +12,12 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-	throw new Error("Not implemented");
+	return width*height;
 }
-
 /**
  * Returns an average of two given numbers.
  *
- * @param {numder} value1
+ * @param {number} value1
  * @param {number} value2
  * @return {number}
  *
@@ -26,9 +27,10 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	throw new Error("Not implemented");
+	value1 = new Big(value1);
+	return  ((value1.plus(value2)).div(2).toNumber());
 }
-
+console.log(getAverage(2,3))
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
@@ -42,9 +44,8 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-	throw new Error("Not implemented");
+	return -b/a? -b/a :0;
 }
-
 /**
  * Returns a last digit of a integer number.
  *
@@ -58,9 +59,8 @@ function getLinearEquationRoot(a, b) {
  *     0     => 0
  */
 function getLastDigit(value) {
-	throw new Error("Not implemented");
+	return Math.abs(value%10);
 }
-
 /**
  * Returns a number by given string representation.
  *
@@ -73,9 +73,8 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-	throw new Error("Not implemented");
+	return parseFloat(value);
 }
-
 /**
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
@@ -94,9 +93,15 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
-	throw new Error("Not implemented");
-}
+	if (n == 2 || n == 3) return true;
 
+	if (n <= 1 || n % 2 == 0 || n % 3 == 0) return false;  
+
+	for (let i = 5; i * i <= n ; i+=6)
+		if (n % i == 0 || n % (i + 2) == 0) return false;
+
+	return true;
+}
 module.exports = {
 	getRectangleArea,
 	getAverage,
