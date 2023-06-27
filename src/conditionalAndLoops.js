@@ -172,64 +172,55 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	let diff = endDate.valueOf() - startDate.valueOf();
+	let diff = new Date(endDate)- new Date(startDate);
+	// let diff = endDate.valueOf() - startDate.valueOf();
 	let secDiff = diff/1000;
 	let minDiff = secDiff/60;
 	let hourDiff = minDiff/60;
 	let dayDiff = hourDiff/24;
 
-	if(secDiff<=45){
-		return "a few seconds ago";
-	}
-	else if(secDiff>45 && secDiff<=90){
-		return "a minute ago";
-	}
-	else if(minDiff <= 45){
-		if(secDiff <=120) return '2 minutes ago';
-		else return `${Math.floor(minDiff)} minutes ago`;
-	}
-	else if(minDiff <= 90){
-		return "an hour ago";
-	}
+	if(secDiff<=45)return "a few seconds ago";
+
+	else if(secDiff<=90) return "a minute ago";
+	
+	else if(secDiff<=120) return '2 minutes ago';
+ 
+	else if(minDiff <= 45) return `${Math.floor(minDiff)} minutes ago`;
+	
+	else if(minDiff <= 90)return "an hour ago";
+
+	else if (minDiff<=120) return '2 hours ago';
+
 	else if(hourDiff<=22){
-		if(minDiff <=120) return '2 hours ago';
-		else{
-			if(hourDiff-Math.floor(hourDiff) <=0.5) return `${Math.floor(hourDiff)} hours ago`;
-			else return `${Math.ceil(hourDiff)} hours ago`;
-		}
+		if(hourDiff-Math.floor(hourDiff) <=0.5) return `${Math.floor(hourDiff)} hours ago`;
+		else return `${Math.ceil(hourDiff)} hours ago`;
 	}
-	else if(hourDiff<=36){
-		return "a day ago";
+	else if(hourDiff<=36) return "a day ago";
+
+	else if(hourDiff <=48) return '2 days ago';
+
+	else if(dayDiff<=25) {
+		if(dayDiff-Math.floor(dayDiff) <=0.5) return `${Math.floor(dayDiff)} days ago`;
+		else return `${Math.ceil(dayDiff)} days ago`;
 	}
-	else if(dayDiff<=25){
-		if(hourDiff <=48) return '2 days ago';
-		else{
-			if(dayDiff-Math.floor(dayDiff) <=0.5) return `${Math.floor(dayDiff)} days ago`;
-			else return `${Math.ceil(dayDiff)} days ago`;
-		}
-	}
-	else if(dayDiff<=45){
-		return "a month ago";
-	}
+	
+	else if(dayDiff<=45) return "a month ago";
+
+	else if (dayDiff<=60) return '2 months ago';
+	
 	else if(dayDiff<345){
-		if(dayDiff <=60) return '2 months ago';
-		else{
-			if((dayDiff/30)-Math.floor(dayDiff/30) <=0.5) return `${Math.floor(dayDiff/30)} months ago`;
+		if((dayDiff/30)-Math.floor(dayDiff/30) <=0.5) return `${Math.floor(dayDiff/30)} months ago`;
+		else return `${Math.ceil(dayDiff/30)} months ago`;
+	}
+	else if(dayDiff<=545) return "a year ago";
+	
+	else if(dayDiff <=727) return '2 years ago';
+	else{
+		if(Math.floor(dayDiff/(12*30)) <=20){
+			if((dayDiff/(12*30))-Math.floor(dayDiff/(12*30)) <=0.5) return `${Math.floor(dayDiff/(12*30))} years ago`;
 			else return `${Math.ceil(dayDiff/30)} months ago`;
 		}
-	}
-	else if(dayDiff<=545){
-		return "a year ago";
-	}
-	else{
-		if(dayDiff <=727) return '2 years ago';
-		else{
-			if(Math.floor(dayDiff/(12*30)) <=20){
-				if((dayDiff/(12*30))-Math.floor(dayDiff/(12*30)) <=0.5) return `${Math.floor(dayDiff/(12*30))} years ago`;
-				else return `${Math.ceil(dayDiff/30)} months ago`;
-			}
-			else return '20 years ago';
-		}
+		else return '20 years ago';
 	}
 	
 }

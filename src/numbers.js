@@ -1,7 +1,9 @@
+const Big = require('big.js');
+
 /**
  * Returns an area of a rectangle given by width and heigth.
  *
- * @param {numder} width
+ * @param {number} width
  * @param {number} height
  * @return {number}
  *
@@ -25,10 +27,10 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	value1 = BigInt(value1);
-	value2 = BigInt(value2);
-	return (value1+value2)/BigInt(2);
+	value1 = new Big(value1);
+	return  ((value1.plus(value2)).div(2).toNumber());
 }
+console.log(getAverage(2,3))
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
@@ -42,7 +44,7 @@ function getAverage(value1, value2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-	return -1*b/a;
+	return -b/a? -b/a :0;
 }
 /**
  * Returns a last digit of a integer number.
