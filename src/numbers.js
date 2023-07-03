@@ -26,7 +26,10 @@ function getRectangleArea(width, height) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-	return BigInt((value1 + value2) / 2);
+	const num1= value1/2;
+	const num2= value2/2;
+	const sum= num1+num2;
+	return sum;
 }
 
 /**
@@ -100,16 +103,17 @@ function parseNumberFromString(value) {
  *   17 => true
  */
 function isPrime(n) {
-	if (number <= 1) {
+	if (n <= 1) {
 		return false;
-	}
-	
-	for (let i = 2; i <= Math.sqrt(number); i++) {
-		if (number % i === 0) {
-			return false;
+	  }
+
+	  // Check for divisibility from 2 to the square root of the number
+	  for (let i = 2; i <= Math.sqrt(n); i++) {
+		if (n % i === 0) {
+		  return false;
 		}
-	}
-	return true;
+		}
+		return true;
 }
 
 module.exports = {

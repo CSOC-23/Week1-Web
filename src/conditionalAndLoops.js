@@ -137,7 +137,30 @@ function reverseString(str) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
+	const stack = [];
+		const openingBrackets = ['[', '(', '{', '<'];
+		const closingBrackets = [']', ')', '}', '>'];
+		const bracketPairs = {
+		  ']': '[',
+		  ')': '(',
+		  '}': '{',
+		  '>': '<',
+		};
+
+		for (let i = 0; i < str.length; i++) {
+		  const char = str[i];
+
+		  if (openingBrackets.includes(char)) {
+			stack.push(char);
+		  } else if (closingBrackets.includes(char)) {
+			const lastOpeningBracket = stack.pop();
+			if (bracketPairs[char] !== lastOpeningBracket) {
+			  return false;
+			}
+		  }
+		}
+
+		return stack.length === 0;
 }
 
 /**
@@ -172,8 +195,67 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
+	let diff = endDate.valueOf() - startDate.valueOf();
+	let secDiff = diff/1000;
+	let minDiff = secDiff/60;
+	let hourDiff = minDiff/60;
+	let dayDiff = hourDiff/24;
+
+	if(secDiff<=45){
+		return "a few seconds ago";
+	}
+	else if(secDiff>45 && secDiff<=90){
+		return "a minute ago";
+	}
+	else if(minDiff <= 45){
+		if(secDiff <=120) return '2 minutes ago';
+		else return `${Math.floor(minDiff)} minutes ago`;
+	}
+	else if(minDiff <= 90){
+		return "an hour ago";
+	}
+	else if(hourDiff<=22){
+		if(minDiff <=120) return '2 hours ago';
+		else{
+			if(hourDiff-Math.floor(hourDiff) <=0.5) return `${Math.floor(hourDiff)} hours ago`;
+			else return `${Math.ceil(hourDiff)} hours ago`;
+		}
+	}
+	else if(hourDiff<=36){
+		return "a day ago";
+	}
+	else if(dayDiff<=25){
+		if(hourDiff <=48) return '2 days ago';
+		else{
+			if(dayDiff-Math.floor(dayDiff) <=0.5) return `${Math.floor(dayDiff)} days ago`;
+			else return `${Math.ceil(dayDiff)} days ago`;
+		}
+	}
+	else if(dayDiff<=45){
+		return "a month ago";
+	}
+	else if(dayDiff<345){
+		if(dayDiff <=60) return '2 months ago';
+		else{
+			if((dayDiff/30)-Math.floor(dayDiff/30) <=0.5) return `${Math.floor(dayDiff/30)} months ago`;
+			else return `${Math.ceil(dayDiff/30)} months ago`;
+		}
+	}
+	else if(dayDiff<=545){
+		return "a year ago";
+	}
+	else{
+		if(dayDiff <=727) return '2 years ago';
+		else{
+			if(Math.floor(dayDiff/(12*30)) <=20){
+				if((dayDiff/(12*30))-Math.floor(dayDiff/(12*30)) <=0.5) return `${Math.floor(dayDiff/(12*30))} years ago`;
+				else return `${Math.ceil(dayDiff/30)} months ago`;
+			}
+			else return '20 years ago';
+		}
+	}
 }
+
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
@@ -196,7 +278,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
+	return num.toString(n);
 }
 
 module.exports = {
