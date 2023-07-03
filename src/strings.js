@@ -11,7 +11,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
+	return value1.concat(value2);
 }
 
 /**
@@ -26,7 +26,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
+	return value.length;
 }
 
 /**
@@ -40,7 +40,7 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
+	return value[0];
 }
 
 /**
@@ -55,7 +55,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
+	return value.trim();
 }
 
 /**
@@ -70,7 +70,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
+	let newString = '';
+	for (let i = 0; i < count; i++) {
+		newString += value;
+	}
+	return newString;
 }
 
 /**
@@ -86,7 +90,16 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
+	const index = str.indexOf(value);
+
+	if (index !== -1) {
+	  const beforeSubstring = str.substring(0, index);
+	  const afterSubstring = str.substring(index + value.length);
+	  return beforeSubstring + afterSubstring;
+	}
+  
+	// If the subString is not found, return the original string
+	return str;
 }
 
 /**
@@ -100,7 +113,7 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
+	return str.toUpperCase();
 }
 
 /**
@@ -120,7 +133,27 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
+	let encodedString = '';
+
+	for (let i = 0; i < str.length; i++) {
+	  const char = str[i];
+	  const charCode = str.charCodeAt(i);
+  
+	  if (charCode >= 65 && charCode <= 90) {
+		// Convert uppercase letters (A-Z)
+		encodedString += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+	  }
+	  else if (charCode >= 97 && charCode <= 122) {
+		// Convert lowercase letters (a-z)
+	 	encodedString += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+	  }
+	  else {
+		// Keep non-alphabetic characters as they are
+		encodedString += char;
+	  }
+	}
+  
+	return encodedString;
 }
 
 module.exports = {
