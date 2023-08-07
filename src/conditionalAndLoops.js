@@ -18,9 +18,18 @@
  *  21 => 'Fizz'
  *
  */
+
 function getFizzBuzz(num) {
-	throw new Error("Not implemented");
-}
+	if (num % 3 === 0 && num % 5 === 0) {
+	  return 'FizzBuzz';
+	} else if (num % 3 === 0) {
+	  return 'Fizz';
+	} else if (num % 5 === 0) {
+	  return 'Buzz';
+	} else {
+	  return num;
+	}
+  }
 
 /**
  * Returns the factorial of the specified integer n.
@@ -33,9 +42,14 @@ function getFizzBuzz(num) {
  *   5  => 120
  *   10 => 3628800
  */
+
 function getFactorial(n) {
-	throw new Error("Not implemented");
-}
+	if (n === 0 || n === 1) {
+	  return 1;
+	} else {
+	  return n * factorial(n - 1);
+	}
+  }
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -49,9 +63,16 @@ function getFactorial(n) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
+
 function getSumBetweenNumbers(n1, n2) {
-	throw new Error("Not implemented");
-}
+	let sum = 0;
+  
+	for (let i = n1; i <= n2; i++) {
+	  sum += i;
+	}
+  
+	return sum;
+  }
 
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false
@@ -68,9 +89,10 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
+
 function isTriangle(a, b, c) {
-	throw new Error("Not implemented");
-}
+	return a + b > c && a + c > b && b + c > a;
+  }
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -84,9 +106,10 @@ function isTriangle(a, b, c) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
+
 function reverseString(str) {
-	throw new Error("Not implemented");
-}
+	return str.split('').reverse().join('');
+  }
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
@@ -109,9 +132,30 @@ function reverseString(str) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
+
 function isBracketsBalanced(str) {
-	throw new Error("Not implemented");
-}
+	const stack = [];
+	const openingBrackets = '([{<';
+	const closingBrackets = ')]}>';
+	const bracketPairs = {
+	  ')': '(',
+	  ']': '[',
+	  '}': '{',
+	  '>': '<',
+	};
+  
+	for (const char of str) {
+	  if (openingBrackets.includes(char)) {
+		stack.push(char);
+	  } else if (closingBrackets.includes(char)) {
+		if (stack.length === 0 || stack.pop() !== bracketPairs[char]) {
+		  return false;
+		}
+	  }
+	}
+  
+	return stack.length === 0;
+  }
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -144,9 +188,43 @@ function isBracketsBalanced(str) {
  *   Date('2000-01-01 01:00:00.100'), Date('2015-01-02 03:00:05.000')  => '15 years ago'
  *
  */
+
 function timespanToHumanString(startDate, endDate) {
-	throw new Error("Not implemented");
-}
+	const diffInMillis = endDate - startDate;
+	const diffInSeconds = Math.floor(diffInMillis / 1000);
+	const diffInMinutes = Math.floor(diffInSeconds / 60);
+	const diffInHours = Math.floor(diffInMinutes / 60);
+	const diffInDays = Math.floor(diffInHours / 24);
+	const diffInMonths = Math.floor(diffInDays / 30);
+	const diffInYears = Math.floor(diffInDays / 365);
+  
+	if (diffInSeconds <= 45) {
+	  return 'a few seconds ago';
+	} else if (diffInSeconds <= 90) {
+	  return 'a minute ago';
+	} else if (diffInMinutes <= 45) {
+	  return `${diffInMinutes} minutes ago`;
+	} else if (diffInMinutes <= 90) {
+	  return 'an hour ago';
+	} else if (diffInHours <= 22) {
+	  return `${diffInHours} hours ago`;
+	} else if (diffInHours <= 36) {
+	  return 'a day ago';
+	} else if (diffInDays <= 25) {
+	  return `${diffInDays} days ago`;
+	} else if (diffInDays <= 45) {
+	  return 'a month ago';
+	} else if (diffInDays <= 345) {
+	  return `${diffInMonths} months ago`;
+	} else if (diffInDays <= 545) {
+	  return 'a year ago';
+	} else {
+	  return `${diffInYears} years ago`;
+	}
+  }
+  
+  
+  
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of
@@ -168,9 +246,10 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
+
 function toNaryString(num, n) {
-	throw new Error("Not implemented");
-}
+	return num.toString(n);
+  }
 
 module.exports = {
 	getFizzBuzz,
