@@ -10,9 +10,15 @@
  *    ['Array', 'Number', 'string'], 'Date'    => -1
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
+
 function findElement(arr, value) {
-	throw new Error("Not implemented");
-}
+	for (let i = 0; i < arr.length; i++) {
+	  if (arr[i] === value) {
+		return i;
+	  }
+	}
+	return -1;
+  }
 
 /**
  * Returns the doubled array - elements of the specified array are repeated twice
@@ -26,9 +32,10 @@ function findElement(arr, value) {
  *    [0, 1, 2, 3, 4, 5] => [0, 1, 2, 3, 4, 5,   0, 1, 2, 3, 4, 5]
  *    [] => []
  */
+
 function doubleArray(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.concat(arr);
+  }
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -41,9 +48,10 @@ function doubleArray(arr) {
  *    [-1, 2, -5, -4, 0] => [ 2 ]
  *    [] => []
  */
+
 function getArrayOfPositives(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.filter(num => num > 0);
+  }
 
 /**
  * Removes falsy values from the specified array
@@ -58,9 +66,10 @@ function getArrayOfPositives(arr) {
  *    [ 1, 2, 3, 4, 5, 'false' ]         => [ 1, 2, 3, 4, 5, 'false' ]
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
+
 function removeFalsyValues(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.filter(item => !!item);
+  }
 
 /**
  * Returns the array of string lengths from the specified string array.
@@ -72,9 +81,10 @@ function removeFalsyValues(arr) {
  *    [ '', 'a', 'bc', 'def', 'ghij' ]  => [ 0, 1, 2, 3, 4 ]
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
+
 function getStringsLength(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.map(str => str.length);
+  }
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -88,9 +98,10 @@ function getStringsLength(arr) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
+
 function getItemsSum(arr) {
-	throw new Error("Not implemented");
-}
+	return arr.reduce((sum, num) => sum + num, 0);
+  }
 
 module.exports = {
 	findElement,

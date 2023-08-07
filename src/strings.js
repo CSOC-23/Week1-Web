@@ -11,8 +11,8 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-	throw new Error("Not implemented");
-}
+	return value1 + value2;
+  }
 
 /**
  * Returns the length of given string.
@@ -26,8 +26,8 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-	throw new Error("Not implemented");
-}
+	return value.length;
+  }
 
 /**
  * Returns a first char of the given string.
@@ -40,8 +40,8 @@ function getStringLength(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-	throw new Error("Not implemented");
-}
+	return value.charAt(0);
+  }
 
 /**
  * Removes a leading and trailing whitespace characters from string.
@@ -55,8 +55,8 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-	throw new Error("Not implemented");
-}
+	return value.trim();
+  }
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -70,8 +70,8 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-	throw new Error("Not implemented");
-}
+	return value.repeat(count);
+  }
 
 /**
  * Remove the first occurrence of string inside another string
@@ -86,8 +86,12 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-	throw new Error("Not implemented");
-}
+	const index = str.indexOf(value);
+	if (index !== -1) {
+	  return str.slice(0, index) + str.slice(index + value.length);
+	}
+	return str;
+  }
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -100,8 +104,8 @@ function removeFirstOccurrences(str, value) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-	throw new Error("Not implemented");
-}
+	return str.toUpperCase();
+  }
 
 /**
  * Encode specified string with ROT13 cipher
@@ -120,8 +124,11 @@ function convertToUpperCase(str) {
  *
  */
 function encodeToRot13(str) {
-	throw new Error("Not implemented");
-}
+	return str.replace(/[a-zA-Z]/g, (char) => {
+	  let shift = char <= 'Z' ? 65 : 97;
+	  return String.fromCharCode((char.charCodeAt(0) - shift + 13) % 26 + shift);
+	});
+  }
 
 module.exports = {
 	concatenateStrings,
